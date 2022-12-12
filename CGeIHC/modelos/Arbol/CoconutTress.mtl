@@ -1,0 +1,389 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 12.07.2019 21:10:04
+
+newmtl root_C_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.0223 0.0223 0.0223
+	Ke 0.0000 0.0000 0.0000
+	map_Ka root_C_color.tga
+	map_Kd root_C_color.tga
+	map_bump -bm 1.2000 root_C_nor_Normal_Bump.tga
+
+newmtl trunk_D_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka batang_D_col.tga
+	map_Kd batang_D_col.tga
+	map_bump -bm 1.2000 trunk_D_nor_Normal_Bump.tga
+
+newmtl papah_nom_B_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.5000 0.5000 0.5000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka papah_nom_B_col.tga
+	map_Kd papah_nom_B_col.tga
+
+newmtl papah_nom_A_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.5000 0.5000 0.5000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka papah_nom_A_col.tga
+	map_Kd papah_nom_A_col.tga
+
+newmtl fruit_kmbl_nom_A_mat
+	Ns 15.0467
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.1880 0.1880 0.1880
+	Ke 0.0000 0.0000 0.0000
+	map_Ka fruit_kmbl_nom_A_col.tga
+	map_Kd fruit_kmbl_nom_A_col.tga
+	map_refl Map__1_Reflect_Refract.tga
+
+newmtl cct_leaf_tua_B_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.5000 0.5000 0.5000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka klp_leaf_tua_B_col.tga
+	map_Kd klp_leaf_tua_B_col.tga
+	map_d klp_leaf_tua_B_opacity.tga
+	map_bump -bm 1.2000 cct_leaf_tua_B_nor_Normal_Bump.tga
+
+newmtl cct_leaf_B_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.5000 0.5000 0.5000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka klp_leaf_B_col.tga
+	map_Kd klp_leaf_B_col.tga
+	map_d klp_leaf_B_opacity.tga
+	map_bump -bm 1.2000 cct_leaf_B_nor_Normal_Bump.tga
+
+newmtl cct_leaf_C_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.5000 0.5000 0.5000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka klp_leaf_C_col.tga
+	map_Kd klp_leaf_C_col.tga
+	map_d klp_leaf_C_opacity.tga
+	map_bump -bm 1.2000 cct_leaf_C_nor_Normal_Bump.tga
+
+newmtl cct_leaf_A_mat
+	Ns 70.2237
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.4000 0.4000 0.4000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.3000 0.3000 0.3000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka klp_leaf_A_col.tga
+	map_Kd klp_leaf_A_col.tga
+	map_d klp_leaf_A_opacity.tga
+	map_bump -bm 1.2000 cct_leaf_A_nor_Normal_Bump.tga
+
+newmtl papah_tua_B_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.5000 0.5000 0.5000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka papah_tua_B_col.tga
+	map_Kd papah_tua_B_col.tga
+
+newmtl cct_leaf_tua_A_mat
+	Ns 70.2237
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.4000 0.4000 0.4000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.3000 0.3000 0.3000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka klp_leaf_tua_A_col.tga
+	map_Kd klp_leaf_tua_A_col.tga
+	map_d klp_leaf_tua_A_opacity.tga
+	map_bump -bm 1.2000 cct_leaf_tua_A_nor_Normal_Bump.tga
+
+newmtl fruit_kmbl_nom_B_mat
+	Ns 31.2116
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.1368 0.1368 0.1368
+	Ke 0.0000 0.0000 0.0000
+	map_Ka fruit_kmbl_nom_B_col.tga
+	map_Kd fruit_kmbl_nom_B_col.tga
+
+newmtl kmbl_stalk_nom_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.1282 0.1282 0.1282
+	Ke 0.0000 0.0000 0.0000
+	map_Ka kmbl_tangkai_nom_col.tga
+	map_Kd kmbl_tangkai_nom_col.tga
+	map_bump -bm 1.2000 stalk_nom_nor_Normal_Bump.tga
+
+newmtl fruit_kmbl_nom_C_mat
+	Ns 24.1965
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.1709 0.1709 0.1709
+	Ke 0.0000 0.0000 0.0000
+	map_Ka fruit_kmbl_nom_C_col.tga
+	map_Kd fruit_kmbl_nom_C_col.tga
+
+newmtl coconutShade_010
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.1397 0.1397 0.1397
+	Ke 0.0000 0.0000 0.0000
+	map_Ka fruit_kmbl_tua_C_col.tga
+	map_Kd fruit_kmbl_tua_C_col.tga
+	map_bump -bm 1.2000 fruit_kmbl_tua_C_nor_Normal_Bump.tga
+
+newmtl kmbl_stalk_tua_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.1282 0.1282 0.1282
+	Ke 0.0000 0.0000 0.0000
+	map_Ka kmbl_tangkai_tua_col.tga
+	map_Kd kmbl_tangkai_tua_col.tga
+	map_bump -bm 1.2000 stalk_tua_nor_Normal_Bump.tga
+
+newmtl coconutShade_09
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.1453 0.1453 0.1453
+	Ke 0.0000 0.0000 0.0000
+	map_Ka fruit_kmbl_tua_B_col.tga
+	map_Kd fruit_kmbl_tua_B_col.tga
+	map_bump -bm 1.2000 fruit_kmbl_tua_B_nor_Normal_Bump.tga
+
+newmtl coconutShade_08
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.0782 0.0782 0.0782
+	Ke 0.0000 0.0000 0.0000
+	map_Ka fruit_kmbl_nom_D_col.tga
+	map_Kd fruit_kmbl_nom_D_col.tga
+
+newmtl fruit_kmbl_tua_A_mat
+	Ns 29.7513
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.1368 0.1368 0.1368
+	Ke 0.0000 0.0000 0.0000
+	map_Ka fruit_kmbl_tua_A_col.tga
+	map_Kd fruit_kmbl_tua_A_col.tga
+	map_bump -bm 1.2000 fruit_kmbl_tua_A_nor_Normal_Bump.tga
+
+newmtl root_B_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.0614 0.0614 0.0614
+	Ke 0.0000 0.0000 0.0000
+	map_Ka root_B_color.tga
+	map_Kd root_B_color.tga
+	map_bump -bm 1.2000 root_B_nor_Normal_Bump.tga
+
+newmtl trunk_B_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka batang_B_col.tga
+	map_Kd batang_B_col.tga
+	map_bump -bm 1.2000 trunk_B_nor_Normal_Bump.tga
+
+newmtl trunk_C_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka batang_C_col.tga
+	map_Kd batang_C_col.tga
+	map_bump -bm 1.2000 trunk_C_normal_Normal_Bump.tga
+
+newmtl coconutShade_016
+	Ns 70.2237
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.4000 0.4000 0.4000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.3000 0.3000 0.3000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka papah_nom_A_col.tga
+	map_Kd papah_nom_A_col.tga
+
+newmtl papah_tua_A_mat
+	Ns 70.2237
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.4000 0.4000 0.4000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.3000 0.3000 0.3000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka papah_tua_A_col.tga
+	map_Kd papah_tua_A_col.tga
+
+newmtl trunk_A_mat
+	Ns 70.2237
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.4000 0.4000 0.4000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka batang_A_col.tga
+	map_Kd batang_A_col.tga
+	map_bump -bm 1.2000 trunk_A_nor_Normal_Bump.tga
+
+newmtl root_A_mat
+	Ns 43.2193
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.0614 0.0614 0.0614
+	Ke 0.0000 0.0000 0.0000
+	map_Ka root_A_color.tga
+	map_Kd root_A_color.tga
+	map_bump -bm 1.2000 root_A_nor_Normal_Bump.tga

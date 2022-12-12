@@ -1,0 +1,30 @@
+﻿  glad.c
+  Proyecto.cpp
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\include\mesh.h(88,1): warning C4267: 'argumento': conversión de 'size_t' a 'GLsizei'; posible pérdida de datos
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\include\meshAnim.h(116,1): warning C4267: 'argumento': conversión de 'size_t' a 'GLsizei'; posible pérdida de datos
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(88,1): error C2062: tipo 'float' inesperado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(139,2): error C2065: 'incX': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(139,69): error C2065: 'i_max_steps': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(140,2): error C2065: 'incY': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(140,69): error C2065: 'i_max_steps': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(141,2): error C2065: 'incZ': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(141,69): error C2065: 'i_max_steps': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(143,2): error C2065: 'saltoDelfIncY': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(143,94): error C2065: 'i_max_steps': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(144,2): error C2065: 'saltoDelfIncZ': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(144,94): error C2065: 'i_max_steps': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(154,23): error C2065: 'i_max_steps': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(174,12): error C2065: 'incY': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(175,12): error C2065: 'incZ': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(177,20): error C2065: 'saltoDelfIncY': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(178,20): error C2065: 'saltoDelfIncZ': identificador no declarado
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(590,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(591,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(595,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(596,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(598,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(599,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(607,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
