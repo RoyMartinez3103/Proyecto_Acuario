@@ -31,11 +31,14 @@
 #include <string.h>
 #include <fstream>
 
+//#include <SDL/SDL_mixer.h>
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void my_input(GLFWwindow* window, int key, int scancode, int action, int mods);
 void animate(void);
+
 
 // settings
 unsigned int SCR_WIDTH = 800;
@@ -202,6 +205,19 @@ int main()
 #ifdef __APPLE__
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
+	/*SDL_Init(SDL_INIT_AUDIO);
+	//************* audio
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	Mix_Music* music = Mix_LoadMUS("resources/audio/delfin.wav");
+	if (!music) {
+		cout << "Music error:" << Mix_GetError() << endl;
+	}
+	//Mix_Chunk* sound = Mix_LoadWAV();
+	/*if (!sound) {
+		cout << "Sound error:" << Mix_GetError() << endl;
+	}
+
+	Mix_PlayMusic(music, -1);*/
 
 	// glfw window creation
 	// --------------------
@@ -270,6 +286,7 @@ int main()
 
 	//***************** Decoración ************************
 	Model aro("modelos/juegos/aro.obj");
+	Model jeep("modelos/auto/Jeep_Renegade_2016_obj/Jeep_Renegade_2016.obj");
 
 	//**************** Animados ***************************
 	Model tib("modelos/Shark_/cuerpoTib.obj"); //Tiburon
@@ -277,8 +294,11 @@ int main()
 
 	Model tuna("modelos/Peces/cuerpoTuna.obj"); //Atún
 	Model tunaTail("modelos/Peces/colaTuna.obj");
+	
+	Model medusa("modelos/medusa/medusa.obj");
+	//Model brazoDer("modelos/Pinguino/anim/brazoDer.obj");
 
-	ModelAnim pezBoca("modelos/Animados/pezBoca/pezBoca.fbx");
+	ModelAnim pezBoca("modelos/Animados/pezBoca/pezMovBoca.fbx");
 	pezBoca.initShaders(animShader.ID);
 
 //*************************** Key Frames ***************************************
@@ -402,7 +422,7 @@ int main()
 		model = glm::scale(model, glm::vec3(4.0f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		pezBoca.Draw(animShader);
+		//pezBoca.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -417,9 +437,17 @@ int main()
 		base.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(1500.0f, 600.0f, -2500.0f));
-		model = glm::scale(model, glm::vec3(6.0f));
+		model = glm::scale(model, glm::vec3(7.0f));
 		staticShader.setMat4("model", model);
 		aro.Draw(staticShader);
+
+		//Jeep
+		model = glm::mat4(1.0f);
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(2300.0f, 0.0f, 5500.0f));
+		model = glm::scale(model, glm::vec3(120.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		jeep.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animales
@@ -434,13 +462,13 @@ int main()
 		// Animales animados
 		// -------------------------------------------------------------------------------------------------------------------------
 
-		//CUERPO TIBURON
+		//Cuerpo tiburon
 		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-4000.0f, 100.0f, 1200.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		tib.Draw(staticShader);
-		//COLA TIBURON
+		//Cola tiburon
 		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(movCola), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -448,17 +476,24 @@ int main()
 		staticShader.setMat4("model", model);
 		tibTail.Draw(staticShader);
 
+		//Medusa
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1800.0f, 500.0f, -4500.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(90.0f));
+		staticShader.setMat4("model", model);
+		medusa.Draw(staticShader);
+
 		//Atun
-		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-2000.0f, 600.0f, -4400.0f));
-		model = glm::scale(model, glm::vec3(100.0f));
+		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-1100.0f, 600.0f, -2800.0f));
+		model = glm::scale(model, glm::vec3(70.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		tuna.Draw(staticShader);
-		//COLA TIBURON
+		//COLA atun
 		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(70.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(movCola), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(100.0f));
+		model = glm::scale(model, glm::vec3(90.0f));
 		staticShader.setMat4("model", model);
 		tunaTail.Draw(staticShader);
 
@@ -527,6 +562,7 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 		saltoDelfinZ += 50.0f;
 	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
 		saltoDelfinZ -= 50.0f;
+	//Mix_PlayChannel(-1, sound, 0);
 
 
 	//Car animation
