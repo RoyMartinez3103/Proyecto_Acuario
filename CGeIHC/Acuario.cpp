@@ -86,15 +86,17 @@ float	posX = 0.0f,
 		posY = 0.0f,
 		posZ = 0.0f,
 		saltoDelfinY = 0.0f,
-		saltoDelfinZ = 0.0f;
+		saltoDelfinZ = 0.0f,
+		rotDelf = 0.0f;
 
 float	incX = 0.0f,
 		incY = 0.0f,
 		incZ = 0.0f,
 		saltoDelfIncY = 0.0f,
-		saltoDelfIncZ = 0.0f;
+		saltoDelfIncZ = 0.0f,
+		rotDelfInc = 0.0f;
 
-#define SAVED_FRAMES 0
+#define SAVED_FRAMES 3
 #define MAX_FRAMES 9  //Se asigna la cantidad max de cuadros clave que puedo guardar
 int i_max_steps = 60;  //Determina los cuadros intermedios, determina la velocidad a la que se mueve la animacion
 int i_curr_steps = 0;
@@ -104,7 +106,7 @@ typedef struct _frame
 	float posX;		//Variable para PosicionX
 	float posY;		//Variable para PosicionY
 	float posZ;		//Variable para PosicionZ
-	float saltoDelfinY, saltoDelfinZ;
+	float saltoDelfinY, saltoDelfinZ, rotDelf;
 }FRAME;
 
 
@@ -123,6 +125,7 @@ void saveFrame(void) //Permite guardar los frames
 
 	KeyFrame[FrameIndex].saltoDelfinY = saltoDelfinY;
 	KeyFrame[FrameIndex].saltoDelfinZ = saltoDelfinZ;
+	KeyFrame[FrameIndex].rotDelf = rotDelf;
 
 	FrameIndex++;
 }
@@ -135,6 +138,7 @@ void resetElements(void)  //Realiza un reseteo cuando se manda a reproducir la a
 
 	saltoDelfinY = KeyFrame[0].saltoDelfinY;
 	saltoDelfinZ = KeyFrame[0].saltoDelfinZ;
+	rotDelf = KeyFrame[0].rotDelf;
 }
 
 void interpolation(void) //Incremento = posFinal - posInicial / #cuadrosClave
@@ -145,6 +149,7 @@ void interpolation(void) //Incremento = posFinal - posInicial / #cuadrosClave
 
 	saltoDelfIncY = (KeyFrame[playIndex + 1].saltoDelfinY - KeyFrame[playIndex].saltoDelfinY) / i_max_steps;
 	saltoDelfIncZ = (KeyFrame[playIndex + 1].saltoDelfinZ - KeyFrame[playIndex].saltoDelfinZ) / i_max_steps;
+	rotDelfInc = (KeyFrame[playIndex + 1].rotDelf - KeyFrame[playIndex].rotDelf) / i_max_steps;
 }
 
 void animate(void) //Ayuda a animar los objetos de manera automática
@@ -179,6 +184,7 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 
 			saltoDelfinY += saltoDelfIncY;
 			saltoDelfinZ += saltoDelfIncZ;
+			rotDelf += rotDelfInc;
 
 			i_curr_steps++;
 		}
@@ -287,6 +293,8 @@ int main()
 	//***************** Decoración ************************
 	Model aro("modelos/juegos/aro.obj");
 	Model jeep("modelos/auto/Jeep_Renegade_2016_obj/Jeep_Renegade_2016.obj");
+	Model lambo("modelos/auto/Lambo/carroceria.obj");
+	Model llanta("modelos/auto/Lambo/wheel.obj");
 
 	//**************** Animados ***************************
 	Model tib("modelos/Shark_/cuerpoTib.obj"); //Tiburon
@@ -298,7 +306,7 @@ int main()
 	Model medusa("modelos/medusa/medusa.obj");
 	//Model brazoDer("modelos/Pinguino/anim/brazoDer.obj");
 
-	ModelAnim pezBoca("modelos/Animados/pezBoca/pezMovBoca.fbx");
+	ModelAnim pezBoca("modelos/Animados/pezBoca/pezX.fbx");
 	pezBoca.initShaders(animShader.ID);
 
 //*************************** Key Frames ***************************************
@@ -311,6 +319,20 @@ int main()
 		KeyFrame[i].saltoDelfinY = 0;
 		KeyFrame[i].saltoDelfinZ = 0;
 	}
+
+	//Frames predeterminados
+	KeyFrame[0].saltoDelfinY = 0.0f;
+	KeyFrame[0].saltoDelfinZ = 0.0f;
+	KeyFrame[0].rotDelf = 0.0f;
+
+	KeyFrame[1].saltoDelfinY = 800.0f;
+	KeyFrame[1].saltoDelfinZ = -2500.0f;
+	KeyFrame[1].rotDelf = 180.0f;
+
+	KeyFrame[2].saltoDelfinY = 0.0f;
+	KeyFrame[2].saltoDelfinZ = -4000.0f;
+	KeyFrame[2].rotDelf = -180.0f;
+
 
 	// render loop
 	// -----------
@@ -434,7 +456,7 @@ int main()
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		base.Draw(staticShader);
+		//base.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(1500.0f, 600.0f, -2500.0f));
 		model = glm::scale(model, glm::vec3(7.0f));
@@ -443,11 +465,27 @@ int main()
 
 		//Jeep
 		model = glm::mat4(1.0f);
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(2300.0f, 0.0f, 5500.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(2300.0f, 0.0f, 5300.0f));
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		jeep.Draw(staticShader);
+
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(15.0f, 0.0f, 0.0f));
+		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		staticShader.setMat4("model", model);
+		lambo.Draw(staticShader);
+
+		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, 12.9f));
+		//model = glm::rotate(model, glm::radians(giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		staticShader.setMat4("model", model);
+		llanta.Draw(staticShader);	//Izq delantera
+
+		//Lambo
+
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animales
@@ -467,14 +505,14 @@ int main()
 		model = glm::scale(model, glm::vec3(8.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		tib.Draw(staticShader);
+		//tib.Draw(staticShader);
 		//Cola tiburon
 		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(movCola), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
-		tibTail.Draw(staticShader);
+		//tibTail.Draw(staticShader);
 
 		//Medusa
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1800.0f, 500.0f, -4500.0f));
@@ -488,14 +526,14 @@ int main()
 		model = glm::scale(model, glm::vec3(70.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		tuna.Draw(staticShader);
+		//tuna.Draw(staticShader);
 		//COLA atun
 		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(70.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(movCola), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(90.0f));
 		staticShader.setMat4("model", model);
-		tunaTail.Draw(staticShader);
+		//tunaTail.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animados KeyFrames
@@ -505,6 +543,7 @@ int main()
 			tmp = model = glm::translate(model, glm::vec3(1500.0f, -100.0f, -500.0f));
 			model = glm::translate(tmp, glm::vec3(0.0f, saltoDelfinY, saltoDelfinZ));
 			model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+			model = glm::rotate(model, glm::radians(rotDelf), glm::vec3(0.0f, 0.0f, 1.0f));
 			model = glm::scale(model, glm::vec3(8.0f));
 			staticShader.setMat4("model", model);
 			delfin.Draw(staticShader);

@@ -1,30 +1,47 @@
-﻿  glad.c
-  Proyecto.cpp
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\include\mesh.h(88,1): warning C4267: 'argumento': conversión de 'size_t' a 'GLsizei'; posible pérdida de datos
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\include\meshAnim.h(116,1): warning C4267: 'argumento': conversión de 'size_t' a 'GLsizei'; posible pérdida de datos
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(88,1): error C2062: tipo 'float' inesperado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(139,2): error C2065: 'incX': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(139,69): error C2065: 'i_max_steps': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(140,2): error C2065: 'incY': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(140,69): error C2065: 'i_max_steps': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(141,2): error C2065: 'incZ': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(141,69): error C2065: 'i_max_steps': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(143,2): error C2065: 'saltoDelfIncY': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(143,94): error C2065: 'i_max_steps': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(144,2): error C2065: 'saltoDelfIncZ': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(144,94): error C2065: 'i_max_steps': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(154,23): error C2065: 'i_max_steps': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(174,12): error C2065: 'incY': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(175,12): error C2065: 'incZ': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(177,20): error C2065: 'saltoDelfIncY': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(178,20): error C2065: 'saltoDelfIncZ': identificador no declarado
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(590,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(591,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(595,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(596,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(598,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(599,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\CGeIHC\CGeIHC\Proyecto.cpp(607,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+﻿  Acuario.cpp
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\include\mesh.h(88,1): warning C4267: 'argumento': conversión de 'size_t' a 'GLsizei'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\include\meshAnim.h(116,1): warning C4267: 'argumento': conversión de 'size_t' a 'GLsizei'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(636,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(637,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(641,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(642,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(644,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(645,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(653,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+  glad.c
+Acuario.obj : error LNK2019: símbolo externo glfwInit sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwTerminate sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwGetPrimaryMonitor sin resolver al que se hace referencia en la función "void __cdecl getResolution(void)" (?getResolution@@YAXXZ)
+Acuario.obj : error LNK2019: símbolo externo glfwGetVideoMode sin resolver al que se hace referencia en la función "void __cdecl getResolution(void)" (?getResolution@@YAXXZ)
+Acuario.obj : error LNK2019: símbolo externo glfwCreateWindow sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwWindowShouldClose sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwSetWindowShouldClose sin resolver al que se hace referencia en la función "void __cdecl my_input(struct GLFWwindow *,int,int,int,int)" (?my_input@@YAXPEAUGLFWwindow@@HHHH@Z)
+Acuario.obj : error LNK2019: símbolo externo glfwSetWindowPos sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwSetFramebufferSizeCallback sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwPollEvents sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwSetInputMode sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwGetKey sin resolver al que se hace referencia en la función "void __cdecl my_input(struct GLFWwindow *,int,int,int,int)" (?my_input@@YAXPEAUGLFWwindow@@HHHH@Z)
+Acuario.obj : error LNK2019: símbolo externo glfwSetKeyCallback sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwSetCursorPosCallback sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwSetScrollCallback sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwGetTime sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwMakeContextCurrent sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwSwapBuffers sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo glfwGetProcAddress sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo SDL_GetTicks sin resolver al que se hace referencia en la función "public: void __cdecl ModelAnim::Draw(class Shader)" (?Draw@ModelAnim@@QEAAXVShader@@@Z)
+Acuario.obj : error LNK2019: símbolo externo SDL_Delay sin resolver al que se hace referencia en la función main
+Acuario.obj : error LNK2019: símbolo externo "public: __cdecl Assimp::Importer::Importer(void)" (??0Importer@Assimp@@QEAA@XZ) sin resolver al que se hace referencia en la función "public: __cdecl ModelAnim::ModelAnim(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,bool)" (??0ModelAnim@@QEAA@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z)
+Acuario.obj : error LNK2019: símbolo externo "public: __cdecl Assimp::Importer::~Importer(void)" (??1Importer@Assimp@@QEAA@XZ) sin resolver al que se hace referencia en la función "int `public: __cdecl ModelAnim::ModelAnim(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,bool)'::`1'::dtor$3" (?dtor$3@?0???0ModelAnim@@QEAA@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z@4HA)
+Acuario.obj : error LNK2019: símbolo externo "public: struct aiScene const * __cdecl Assimp::Importer::ReadFile(char const *,unsigned int)" (?ReadFile@Importer@Assimp@@QEAAPEBUaiScene@@PEBDI@Z) sin resolver al que se hace referencia en la función "public: struct aiScene const * __cdecl Assimp::Importer::ReadFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,unsigned int)" (?ReadFile@Importer@Assimp@@QEAAPEBUaiScene@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z)
+Acuario.obj : error LNK2019: símbolo externo "public: char const * __cdecl Assimp::Importer::GetErrorString(void)const " (?GetErrorString@Importer@Assimp@@QEBAPEBDXZ) sin resolver al que se hace referencia en la función "private: void __cdecl Model::loadModel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadModel@Model@@AEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Acuario.obj : error LNK2019: símbolo externo aiGetMaterialTextureCount sin resolver al que se hace referencia en la función "public: unsigned int __cdecl aiMaterial::GetTextureCount(enum aiTextureType)const " (?GetTextureCount@aiMaterial@@QEBAIW4aiTextureType@@@Z)
+Acuario.obj : error LNK2019: símbolo externo aiGetMaterialTexture sin resolver al que se hace referencia en la función "public: enum aiReturn __cdecl aiMaterial::GetTexture(enum aiTextureType,unsigned int,struct aiString *,enum aiTextureMapping *,unsigned int *,float *,enum aiTextureOp *,enum aiTextureMapMode *)const " (?GetTexture@aiMaterial@@QEBA?AW4aiReturn@@W4aiTextureType@@IPEAUaiString@@PEAW4aiTextureMapping@@PEAIPEAMPEAW4aiTextureOp@@PEAW4aiTextureMapMode@@@Z)
+lib\assimp-vc141-mtd.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+lib\SDL2.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+lib\SDL2main.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+lib\glew32.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+lib\glfw3.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\x64\Debug\CGeIHC.exe : fatal error LNK1120: 27 externos sin resolver
