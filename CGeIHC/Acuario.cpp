@@ -79,9 +79,11 @@ float	movAuto_x = 0.0f,
 bool	carro = false;
 
 //Animaciones peces
-float movCola = 0.0f;
+float	movCola = 0.0f,
+		camina = 0.0f;
 
-bool regresa = false;
+bool	regresa = false,
+		regresaCan = false;
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -210,19 +212,34 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 	//}
 //Animación peces
 	//movCola += 0.5f;
-	if (regresa){
-		if (movCola > -40.0f)
-			movCola -= 1.0f;
+	if (regresa) {
+		if (movCola > -45.0f)
+			movCola -= 2.0f;
 		else
 			regresa = false;
 	}
 	else {
-		if (movCola < 40.0f)
-			movCola += 1.0f;
+		if (movCola < 90.0f)
+			movCola += 2.0f;
 		else
 			regresa = true;
 	}
+
+	//Animación cangrejo
+	if (regresaCan) {
+		if (camina > -600.0f)
+			camina -= 3.0f;
+		else
+			regresaCan = false;
+	}
+	else {
+		if (camina < 2500.0f)
+			camina += 3.0f;
+		else
+			regresaCan = true;
+	}
 }
+	
 
 void getResolution()
 {
@@ -325,7 +342,9 @@ int main()
 
 	//***************** Decoración ************************
 	Model aro("modelos/juegos/aro.obj");
-	Model sponge("modelos/decoracion/TubeSponge_Med.fbx");
+	Model shell("modelos/decoracion/seashell.fbx");
+	//shell.initShaders(animShader.ID);
+
 	
 
 	//**************** Animados ***************************
@@ -343,7 +362,8 @@ int main()
 	ModelAnim mariposa("modelos/Animados/butterflyFBX/butterflyFBX.fbx");
 	mariposa.initShaders(animShader.ID);
 
-	ModelAnim kraken("modelos/Animados/kraken-animation/source/Kraken.fbx");
+	//ModelAnim kraken("modelos/Animados/kraken-animation/source/Kraken.fbx");
+	//kraken.initShaders(animShader.ID);
 
 //*************************** Key Frames ***************************************
 	//Inicialización de KeyFrames
@@ -462,7 +482,7 @@ int main()
 		model = glm::scale(model, glm::vec3(2.0f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		mariposa.Draw(animShader);
+		//mariposa.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Segundo Personaje Animacion
@@ -472,7 +492,7 @@ int main()
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, glfwGetTime()));
 		model = glm::scale(model, glm::vec3(6.0f));	// it's a bit too big for our scene, so scale it down
 		animShader.setMat4("model", model);
-		kraken.Draw(animShader);
+		//kraken.Draw(animShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-3000.0f, 900.0f, -4400.0f)); // translate it down so it's at the center of the scene
 		model = glm::scale(model, glm::vec3(4.0f));	// it's a bit too big for our scene, so scale it down
@@ -543,23 +563,31 @@ int main()
 		staticShader.setMat4("model", model);
 		orca.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(15.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-7200.0f + camina, 30.0f, -3800.0f));
+		model = glm::scale(model, glm::vec3(18.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		cangrejo.Draw(staticShader);
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 200.0f));
-		model = glm::scale(model, glm::vec3(15.0f));
-		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-6500.0f, 10.0f, -4500.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		cangrejoAz.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 500.0f));
-		model = glm::scale(model, glm::vec3(15.0f));
-		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-5200.0f, 30.0f, -4200.0f));
+		model = glm::scale(model, glm::vec3(50.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		cangrejoLi.Draw(staticShader);
+
+		 model = glm::translate(glm::mat4(1.0f), glm::vec3(-7200.0f, 5.0f, -4600.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		shell.Draw(staticShader);
+
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animales animados
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -590,14 +618,14 @@ int main()
 		model = glm::scale(model, glm::vec3(50.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//tuna.Draw(staticShader);
+		tuna.Draw(staticShader);
 		//COLA atun
 		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(50.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(movCola), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(90.0f));
+		model = glm::scale(model, glm::vec3(70.0f));
 		staticShader.setMat4("model", model);
-		//tunaTail.Draw(staticShader);
+		tunaTail.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animados KeyFrames
