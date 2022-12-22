@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
-# File Created: 11.12.2022 12:53:18
+# File Created: 18.12.2022 22:29:58
 
 newmtl Material__97
 	Ns 10.0000
@@ -12,8 +12,8 @@ newmtl Material__97
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\Map__92_Map Output Selector.tga
-	map_Kd maps\Map__92_Map Output Selector.tga
+	map_Ka texturesBase\Map__92_Map Output Selector.tga
+	map_Kd texturesBase\Map__92_Map Output Selector.tga
 
 newmtl Slide_phong2SG
 	Ns 2.0000
@@ -38,8 +38,8 @@ newmtl Material__146
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\Map__87_Map Output Selector.tga
-	map_Kd maps\Map__87_Map Output Selector.tga
+	map_Ka texturesBase\Map__87_Map Output Selector.tga
+	map_Kd texturesBase\Map__87_Map Output Selector.tga
 
 newmtl Material__226
 	Ns 10.0000
@@ -52,8 +52,8 @@ newmtl Material__226
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\Map__97_Map Output Selector.tga
-	map_Kd maps\Map__97_Map Output Selector.tga
+	map_Ka texturesBase\Map__97_Map Output Selector.tga
+	map_Kd texturesBase\Map__97_Map Output Selector.tga
 
 newmtl Slide_phong4SG
 	Ns 4.0000
@@ -78,8 +78,8 @@ newmtl Bancas
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\Map__66_Map Output Selector.tga
-	map_Kd maps\Map__66_Map Output Selector.tga
+	map_Ka texturesBase\Map__66_Map Output Selector.tga
+	map_Kd texturesBase\Map__66_Map Output Selector.tga
 
 newmtl CoconutTress_root_C_mat
 	Ns 43.2193
@@ -92,10 +92,10 @@ newmtl CoconutTress_root_C_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.0223 0.0223 0.0223
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\root_C_color.tga
-	map_Kd maps\root_C_color.tga
-	map_bump maps\root_C_nor_Normal_Bump.tga
-	bump maps\root_C_nor_Normal_Bump.tga
+	map_Ka texturesBase\root_C_color.tga
+	map_Kd texturesBase\root_C_color.tga
+	map_bump texturesBase\root_C_nor_Normal_Bump.tga
+	bump texturesBase\root_C_nor_Normal_Bump.tga
 
 newmtl CoconutTress_trunk_D_mat
 	Ns 43.2193
@@ -108,10 +108,10 @@ newmtl CoconutTress_trunk_D_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\batang_D_col.tga
-	map_Kd maps\batang_D_col.tga
-	map_bump maps\trunk_D_nor_Normal_Bump.tga
-	bump maps\trunk_D_nor_Normal_Bump.tga
+	map_Ka texturesBase\batang_D_col.tga
+	map_Kd texturesBase\batang_D_col.tga
+	map_bump texturesBase\trunk_D_nor_Normal_Bump.tga
+	bump texturesBase\trunk_D_nor_Normal_Bump.tga
 
 newmtl CoconutTress_papah_nom_B_mat
 	Ns 43.2193
@@ -124,8 +124,8 @@ newmtl CoconutTress_papah_nom_B_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.5000 0.5000 0.5000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\papah_nom_B_col.tga
-	map_Kd maps\papah_nom_B_col.tga
+	map_Ka texturesBase\papah_nom_B_col.tga
+	map_Kd texturesBase\papah_nom_B_col.tga
 
 newmtl CoconutTress_papah_nom_A_mat
 	Ns 43.2193
@@ -138,8 +138,8 @@ newmtl CoconutTress_papah_nom_A_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.5000 0.5000 0.5000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\papah_nom_A_col.tga
-	map_Kd maps\papah_nom_A_col.tga
+	map_Ka texturesBase\papah_nom_A_col.tga
+	map_Kd texturesBase\papah_nom_A_col.tga
 
 newmtl CoconutTress_fruit_kmbl_nom_A_mat
 	Ns 15.0467
@@ -152,9 +152,9 @@ newmtl CoconutTress_fruit_kmbl_nom_A_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.1880 0.1880 0.1880
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\fruit_kmbl_nom_A_col.tga
-	map_Kd maps\fruit_kmbl_nom_A_col.tga
-	map_refl maps\Map__1_Reflect_Refract.tga
+	map_Ka texturesBase\fruit_kmbl_nom_A_col.tga
+	map_Kd texturesBase\fruit_kmbl_nom_A_col.tga
+	map_refl texturesBase\Map__1_Reflect_Refract.tga
 
 newmtl CoconutTress_cct_leaf_tua_B_mat
 	Ns 43.2193
@@ -167,11 +167,11 @@ newmtl CoconutTress_cct_leaf_tua_B_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.5000 0.5000 0.5000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\klp_leaf_tua_B_col.tga
-	map_Kd maps\klp_leaf_tua_B_col.tga
-	map_d maps\klp_leaf_tua_B_opacity.tga
-	map_bump maps\cct_leaf_tua_B_nor_Normal_Bump.tga
-	bump maps\cct_leaf_tua_B_nor_Normal_Bump.tga
+	map_Ka texturesBase\klp_leaf_tua_B_col.tga
+	map_Kd texturesBase\klp_leaf_tua_B_col.tga
+	map_d texturesBase\klp_leaf_tua_B_opacity.tga
+	map_bump texturesBase\cct_leaf_tua_B_nor_Normal_Bump.tga
+	bump texturesBase\cct_leaf_tua_B_nor_Normal_Bump.tga
 
 newmtl CoconutTress_cct_leaf_B_mat
 	Ns 43.2193
@@ -184,11 +184,11 @@ newmtl CoconutTress_cct_leaf_B_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.5000 0.5000 0.5000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\klp_leaf_B_col.tga
-	map_Kd maps\klp_leaf_B_col.tga
-	map_d maps\klp_leaf_B_opacity.tga
-	map_bump maps\cct_leaf_B_nor_Normal_Bump.tga
-	bump maps\cct_leaf_B_nor_Normal_Bump.tga
+	map_Ka texturesBase\klp_leaf_B_col.tga
+	map_Kd texturesBase\klp_leaf_B_col.tga
+	map_d texturesBase\klp_leaf_B_opacity.tga
+	map_bump texturesBase\cct_leaf_B_nor_Normal_Bump.tga
+	bump texturesBase\cct_leaf_B_nor_Normal_Bump.tga
 
 newmtl CoconutTress_cct_leaf_C_mat
 	Ns 43.2193
@@ -201,11 +201,11 @@ newmtl CoconutTress_cct_leaf_C_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.5000 0.5000 0.5000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\klp_leaf_C_col.tga
-	map_Kd maps\klp_leaf_C_col.tga
-	map_d maps\klp_leaf_C_opacity.tga
-	map_bump maps\cct_leaf_C_nor_Normal_Bump.tga
-	bump maps\cct_leaf_C_nor_Normal_Bump.tga
+	map_Ka texturesBase\klp_leaf_C_col.tga
+	map_Kd texturesBase\klp_leaf_C_col.tga
+	map_d texturesBase\klp_leaf_C_opacity.tga
+	map_bump texturesBase\cct_leaf_C_nor_Normal_Bump.tga
+	bump texturesBase\cct_leaf_C_nor_Normal_Bump.tga
 
 newmtl CoconutTress_cct_leaf_A_mat
 	Ns 70.2237
@@ -218,11 +218,11 @@ newmtl CoconutTress_cct_leaf_A_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.3000 0.3000 0.3000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\klp_leaf_A_col.tga
-	map_Kd maps\klp_leaf_A_col.tga
-	map_d maps\klp_leaf_A_opacity.tga
-	map_bump maps\cct_leaf_A_nor_Normal_Bump.tga
-	bump maps\cct_leaf_A_nor_Normal_Bump.tga
+	map_Ka texturesBase\klp_leaf_A_col.tga
+	map_Kd texturesBase\klp_leaf_A_col.tga
+	map_d texturesBase\klp_leaf_A_opacity.tga
+	map_bump texturesBase\cct_leaf_A_nor_Normal_Bump.tga
+	bump texturesBase\cct_leaf_A_nor_Normal_Bump.tga
 
 newmtl CoconutTress_papah_tua_B_mat
 	Ns 43.2193
@@ -235,8 +235,8 @@ newmtl CoconutTress_papah_tua_B_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.5000 0.5000 0.5000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\papah_tua_B_col.tga
-	map_Kd maps\papah_tua_B_col.tga
+	map_Ka texturesBase\papah_tua_B_col.tga
+	map_Kd texturesBase\papah_tua_B_col.tga
 
 newmtl CoconutTress_cct_leaf_tua_A_mat
 	Ns 70.2237
@@ -249,11 +249,11 @@ newmtl CoconutTress_cct_leaf_tua_A_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.3000 0.3000 0.3000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\klp_leaf_tua_A_col.tga
-	map_Kd maps\klp_leaf_tua_A_col.tga
-	map_d maps\klp_leaf_tua_A_opacity.tga
-	map_bump maps\cct_leaf_tua_A_nor_Normal_Bump.tga
-	bump maps\cct_leaf_tua_A_nor_Normal_Bump.tga
+	map_Ka texturesBase\klp_leaf_tua_A_col.tga
+	map_Kd texturesBase\klp_leaf_tua_A_col.tga
+	map_d texturesBase\klp_leaf_tua_A_opacity.tga
+	map_bump texturesBase\cct_leaf_tua_A_nor_Normal_Bump.tga
+	bump texturesBase\cct_leaf_tua_A_nor_Normal_Bump.tga
 
 newmtl CoconutTress_fruit_kmbl_nom_B_mat
 	Ns 31.2116
@@ -266,8 +266,8 @@ newmtl CoconutTress_fruit_kmbl_nom_B_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.1368 0.1368 0.1368
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\fruit_kmbl_nom_B_col.tga
-	map_Kd maps\fruit_kmbl_nom_B_col.tga
+	map_Ka texturesBase\fruit_kmbl_nom_B_col.tga
+	map_Kd texturesBase\fruit_kmbl_nom_B_col.tga
 
 newmtl CoconutTress_kmbl_stalk_nom_mat
 	Ns 43.2193
@@ -280,10 +280,10 @@ newmtl CoconutTress_kmbl_stalk_nom_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.1282 0.1282 0.1282
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\kmbl_tangkai_nom_col.tga
-	map_Kd maps\kmbl_tangkai_nom_col.tga
-	map_bump maps\stalk_nom_nor_Normal_Bump.tga
-	bump maps\stalk_nom_nor_Normal_Bump.tga
+	map_Ka texturesBase\kmbl_tangkai_nom_col.tga
+	map_Kd texturesBase\kmbl_tangkai_nom_col.tga
+	map_bump texturesBase\stalk_nom_nor_Normal_Bump.tga
+	bump texturesBase\stalk_nom_nor_Normal_Bump.tga
 
 newmtl CoconutTress_fruit_kmbl_nom_C_mat
 	Ns 24.1965
@@ -296,8 +296,8 @@ newmtl CoconutTress_fruit_kmbl_nom_C_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.1709 0.1709 0.1709
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\fruit_kmbl_nom_C_col.tga
-	map_Kd maps\fruit_kmbl_nom_C_col.tga
+	map_Ka texturesBase\fruit_kmbl_nom_C_col.tga
+	map_Kd texturesBase\fruit_kmbl_nom_C_col.tga
 
 newmtl CoconutTress_coconutShade_010
 	Ns 43.2193
@@ -310,10 +310,10 @@ newmtl CoconutTress_coconutShade_010
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.1397 0.1397 0.1397
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\fruit_kmbl_tua_C_col.tga
-	map_Kd maps\fruit_kmbl_tua_C_col.tga
-	map_bump maps\fruit_kmbl_tua_C_nor_Normal_Bump.tga
-	bump maps\fruit_kmbl_tua_C_nor_Normal_Bump.tga
+	map_Ka texturesBase\fruit_kmbl_tua_C_col.tga
+	map_Kd texturesBase\fruit_kmbl_tua_C_col.tga
+	map_bump texturesBase\fruit_kmbl_tua_C_nor_Normal_Bump.tga
+	bump texturesBase\fruit_kmbl_tua_C_nor_Normal_Bump.tga
 
 newmtl CoconutTress_kmbl_stalk_tua_mat
 	Ns 43.2193
@@ -326,10 +326,10 @@ newmtl CoconutTress_kmbl_stalk_tua_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.1282 0.1282 0.1282
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\kmbl_tangkai_tua_col.tga
-	map_Kd maps\kmbl_tangkai_tua_col.tga
-	map_bump maps\stalk_tua_nor_Normal_Bump.tga
-	bump maps\stalk_tua_nor_Normal_Bump.tga
+	map_Ka texturesBase\kmbl_tangkai_tua_col.tga
+	map_Kd texturesBase\kmbl_tangkai_tua_col.tga
+	map_bump texturesBase\stalk_tua_nor_Normal_Bump.tga
+	bump texturesBase\stalk_tua_nor_Normal_Bump.tga
 
 newmtl CoconutTress_coconutShade_09
 	Ns 43.2193
@@ -342,10 +342,10 @@ newmtl CoconutTress_coconutShade_09
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.1453 0.1453 0.1453
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\fruit_kmbl_tua_B_col.tga
-	map_Kd maps\fruit_kmbl_tua_B_col.tga
-	map_bump maps\fruit_kmbl_tua_B_nor_Normal_Bump.tga
-	bump maps\fruit_kmbl_tua_B_nor_Normal_Bump.tga
+	map_Ka texturesBase\fruit_kmbl_tua_B_col.tga
+	map_Kd texturesBase\fruit_kmbl_tua_B_col.tga
+	map_bump texturesBase\fruit_kmbl_tua_B_nor_Normal_Bump.tga
+	bump texturesBase\fruit_kmbl_tua_B_nor_Normal_Bump.tga
 
 newmtl CoconutTress_coconutShade_08
 	Ns 43.2193
@@ -358,8 +358,8 @@ newmtl CoconutTress_coconutShade_08
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.0782 0.0782 0.0782
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\fruit_kmbl_nom_D_col.tga
-	map_Kd maps\fruit_kmbl_nom_D_col.tga
+	map_Ka texturesBase\fruit_kmbl_nom_D_col.tga
+	map_Kd texturesBase\fruit_kmbl_nom_D_col.tga
 
 newmtl CoconutTress_fruit_kmbl_tua_A_mat
 	Ns 29.7513
@@ -372,10 +372,10 @@ newmtl CoconutTress_fruit_kmbl_tua_A_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.1368 0.1368 0.1368
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\fruit_kmbl_tua_A_col.tga
-	map_Kd maps\fruit_kmbl_tua_A_col.tga
-	map_bump maps\fruit_kmbl_tua_A_nor_Normal_Bump.tga
-	bump maps\fruit_kmbl_tua_A_nor_Normal_Bump.tga
+	map_Ka texturesBase\fruit_kmbl_tua_A_col.tga
+	map_Kd texturesBase\fruit_kmbl_tua_A_col.tga
+	map_bump texturesBase\fruit_kmbl_tua_A_nor_Normal_Bump.tga
+	bump texturesBase\fruit_kmbl_tua_A_nor_Normal_Bump.tga
 
 newmtl CoconutTress_coconutShade_016
 	Ns 70.2237
@@ -388,8 +388,8 @@ newmtl CoconutTress_coconutShade_016
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.3000 0.3000 0.3000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\papah_nom_A_col.tga
-	map_Kd maps\papah_nom_A_col.tga
+	map_Ka texturesBase\papah_nom_A_col.tga
+	map_Kd texturesBase\papah_nom_A_col.tga
 
 newmtl CoconutTress_papah_tua_A_mat
 	Ns 70.2237
@@ -402,8 +402,8 @@ newmtl CoconutTress_papah_tua_A_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.3000 0.3000 0.3000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\papah_tua_A_col.tga
-	map_Kd maps\papah_tua_A_col.tga
+	map_Ka texturesBase\papah_tua_A_col.tga
+	map_Kd texturesBase\papah_tua_A_col.tga
 
 newmtl CoconutTress_trunk_A_mat
 	Ns 70.2237
@@ -416,10 +416,10 @@ newmtl CoconutTress_trunk_A_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\batang_A_col.tga
-	map_Kd maps\batang_A_col.tga
-	map_bump maps\trunk_A_nor_Normal_Bump.tga
-	bump maps\trunk_A_nor_Normal_Bump.tga
+	map_Ka texturesBase\batang_A_col.tga
+	map_Kd texturesBase\batang_A_col.tga
+	map_bump texturesBase\trunk_A_nor_Normal_Bump.tga
+	bump texturesBase\trunk_A_nor_Normal_Bump.tga
 
 newmtl CoconutTress_root_A_mat
 	Ns 43.2193
@@ -432,10 +432,10 @@ newmtl CoconutTress_root_A_mat
 	Kd 0.8000 0.8000 0.8000
 	Ks 0.0614 0.0614 0.0614
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\root_A_color.tga
-	map_Kd maps\root_A_color.tga
-	map_bump maps\root_A_nor_Normal_Bump.tga
-	bump maps\root_A_nor_Normal_Bump.tga
+	map_Ka texturesBase\root_A_color.tga
+	map_Kd texturesBase\root_A_color.tga
+	map_bump texturesBase\root_A_nor_Normal_Bump.tga
+	bump texturesBase\root_A_nor_Normal_Bump.tga
 
 newmtl 08___Default
 	Ns 10.0000
@@ -448,8 +448,8 @@ newmtl 08___Default
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\agua.jpg
-	map_Kd maps\agua.jpg
+	map_Ka texturesBase\agua.jpg
+	map_Kd texturesBase\agua.jpg
 
 newmtl Material__668
 	Ns 10.0000
@@ -462,8 +462,8 @@ newmtl Material__668
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\Map__128_Marble.tga
-	map_Kd maps\Map__128_Marble.tga
+	map_Ka texturesBase\Map__128_Marble.tga
+	map_Kd texturesBase\Map__128_Marble.tga
 
 newmtl pavimento
 	Ns 10.0000
@@ -476,8 +476,8 @@ newmtl pavimento
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\pavimento.png
-	map_Kd maps\pavimento.png
+	map_Ka texturesBase\pavimento.png
+	map_Kd texturesBase\pavimento.png
 
 newmtl Material__1231
 	Ns 10.0000
@@ -490,8 +490,22 @@ newmtl Material__1231
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\vidrio.png
-	map_Kd maps\vidrio.png
+	map_Ka texturesBase\vidrio.png
+	map_Kd texturesBase\vidrio.png
+
+newmtl 24___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\rocas.jpg
+	map_Kd texturesBase\rocas.jpg
 
 newmtl uploads_files_1847395_swing_metal_paint
 	Ns 10.0000
@@ -504,8 +518,8 @@ newmtl uploads_files_1847395_swing_metal_paint
 	Kd 0.3882 0.3882 0.3882
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\pasto.jpg
-	map_Kd maps\pasto.jpg
+	map_Ka texturesBase\pasto.jpg
+	map_Kd texturesBase\pasto.jpg
 
 newmtl bigwallstripes_mso
 	Ns 10.0000
@@ -518,8 +532,8 @@ newmtl bigwallstripes_mso
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\difpart1.jpg
-	map_Kd maps\difpart1.jpg
+	map_Ka texturesBase\difpart1.jpg
+	map_Kd texturesBase\difpart1.jpg
 
 newmtl 20___Default
 	Ns 10.0000
@@ -532,8 +546,8 @@ newmtl 20___Default
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\p2alphadif.png
-	map_Kd maps\p2alphadif.png
+	map_Ka texturesBase\p2alphadif.png
+	map_Kd texturesBase\p2alphadif.png
 
 newmtl Material__1280
 	Ns 10.0000
@@ -546,36 +560,8 @@ newmtl Material__1280
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\txtEdificio.jpg
-	map_Kd maps\txtEdificio.jpg
-
-newmtl 22___Default
-	Ns 10.0000
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 0.5880 0.5880 0.5880
-	Kd 0.5880 0.5880 0.5880
-	Ks 0.0000 0.0000 0.0000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\fondoAcuario.jpg
-	map_Kd maps\fondoAcuario.jpg
-
-newmtl 13___Default
-	Ns 10.0000
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 0.5880 0.5880 0.5880
-	Kd 0.5880 0.5880 0.5880
-	Ks 0.0000 0.0000 0.0000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\coral.jpg
-	map_Kd maps\coral.jpg
+	map_Ka texturesBase\txtEdificio.jpg
+	map_Kd texturesBase\txtEdificio.jpg
 
 newmtl 14___Default
 	Ns 10.0000
@@ -588,8 +574,8 @@ newmtl 14___Default
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\metal.jpg
-	map_Kd maps\metal.jpg
+	map_Ka texturesBase\metal.jpg
+	map_Kd texturesBase\metal.jpg
 
 newmtl 11___Default
 	Ns 10.0000
@@ -602,8 +588,22 @@ newmtl 11___Default
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\poloS.jpg
-	map_Kd maps\poloS.jpg
+	map_Ka texturesBase\poloS.jpg
+	map_Kd texturesBase\poloS.jpg
+
+newmtl 13___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\coral.jpg
+	map_Kd texturesBase\coral.jpg
 
 newmtl 15___Default
 	Ns 10.0000
@@ -616,22 +616,8 @@ newmtl 15___Default
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\neon.jpg
-	map_Kd maps\neon.jpg
-
-newmtl 21___Default
-	Ns 10.0000
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 0.5880 0.5880 0.5880
-	Kd 0.5880 0.5880 0.5880
-	Ks 0.0000 0.0000 0.0000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\pisogris.jpg
-	map_Kd maps\pisogris.jpg
+	map_Ka texturesBase\neon.jpg
+	map_Kd texturesBase\neon.jpg
 
 newmtl 16___Default
 	Ns 10.0000
@@ -644,8 +630,50 @@ newmtl 16___Default
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\arena.jpg
-	map_Kd maps\arena.jpg
+	map_Ka texturesBase\arena.jpg
+	map_Kd texturesBase\arena.jpg
+
+newmtl 21___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\pisogris.jpg
+	map_Kd texturesBase\pisogris.jpg
+
+newmtl 22___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\fondoAcuario.jpg
+	map_Kd texturesBase\fondoAcuario.jpg
+
+newmtl 17___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\coral2.jpg
+	map_Kd texturesBase\coral2.jpg
 
 newmtl uploads_files_1847395_swing_rusty_metal_paint
 	Ns 10.0000
@@ -658,8 +686,8 @@ newmtl uploads_files_1847395_swing_rusty_metal_paint
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\Water cooler.png
-	map_Kd maps\Water cooler.png
+	map_Ka texturesBase\Water cooler.png
+	map_Kd texturesBase\Water cooler.png
 
 newmtl 12___Default
 	Ns 10.0000
@@ -672,8 +700,8 @@ newmtl 12___Default
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\Vending machine1.png
-	map_Kd maps\Vending machine1.png
+	map_Ka texturesBase\Vending machine1.png
+	map_Kd texturesBase\Vending machine1.png
 
 newmtl uploads_files_1847395_swing_rusty_metal
 	Ns 10.0000
@@ -686,8 +714,8 @@ newmtl uploads_files_1847395_swing_rusty_metal
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\Vending machine3.png
-	map_Kd maps\Vending machine3.png
+	map_Ka texturesBase\Vending machine3.png
+	map_Kd texturesBase\Vending machine3.png
 
 newmtl material_1
 	Ns 1.0000
@@ -700,8 +728,8 @@ newmtl material_1
 	Kd 1.0000 1.0000 1.0000
 	Ks 1.0000 1.0000 1.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\crt1a.jpg
-	map_Kd maps\crt1a.jpg
+	map_Ka texturesBase\crt1a.jpg
+	map_Kd texturesBase\crt1a.jpg
 
 newmtl material_1_black
 	Ns 1.0000
@@ -726,8 +754,8 @@ newmtl material_1_counter_top
 	Kd 1.0000 1.0000 1.0000
 	Ks 1.0000 1.0000 1.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\cnt1.jpg
-	map_Kd maps\cnt1.jpg
+	map_Ka texturesBase\cnt1.jpg
+	map_Kd texturesBase\cnt1.jpg
 
 newmtl material_1_display1
 	Ns 1.0000
@@ -740,8 +768,8 @@ newmtl material_1_display1
 	Kd 1.0000 1.0000 1.0000
 	Ks 1.0000 1.0000 1.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\d1.jpg
-	map_Kd maps\d1.jpg
+	map_Ka texturesBase\d1.jpg
+	map_Kd texturesBase\d1.jpg
 
 newmtl material_1_display2
 	Ns 1.0000
@@ -754,8 +782,8 @@ newmtl material_1_display2
 	Kd 1.0000 1.0000 1.0000
 	Ks 1.0000 1.0000 1.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\d2.jpg
-	map_Kd maps\d2.jpg
+	map_Ka texturesBase\d2.jpg
+	map_Kd texturesBase\d2.jpg
 
 newmtl material_1_display3
 	Ns 1.0000
@@ -768,8 +796,8 @@ newmtl material_1_display3
 	Kd 1.0000 1.0000 1.0000
 	Ks 1.0000 1.0000 1.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\d3.jpg
-	map_Kd maps\d3.jpg
+	map_Ka texturesBase\d3.jpg
+	map_Kd texturesBase\d3.jpg
 
 newmtl material_1_display4
 	Ns 1.0000
@@ -782,8 +810,8 @@ newmtl material_1_display4
 	Kd 1.0000 1.0000 1.0000
 	Ks 1.0000 1.0000 1.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\d4.jpg
-	map_Kd maps\d4.jpg
+	map_Ka texturesBase\d4.jpg
+	map_Kd texturesBase\d4.jpg
 
 newmtl material_1_sign
 	Ns 1.0000
@@ -832,8 +860,8 @@ newmtl material_1_structure
 	Kd 1.0000 1.0000 1.0000
 	Ks 1.0000 1.0000 1.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\st1.jpg
-	map_Kd maps\st1.jpg
+	map_Ka texturesBase\st1.jpg
+	map_Kd texturesBase\st1.jpg
 
 newmtl material_1_trans_green
 	Ns 1.0000
@@ -858,8 +886,8 @@ newmtl material_1_wood
 	Kd 1.0000 1.0000 1.0000
 	Ks 1.0000 1.0000 1.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\wd1.jpg
-	map_Kd maps\wd1.jpg
+	map_Ka texturesBase\wd1.jpg
+	map_Kd texturesBase\wd1.jpg
 
 newmtl lamina
 	Ns 10.0000
@@ -872,8 +900,8 @@ newmtl lamina
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\metal.jpg
-	map_Kd maps\metal.jpg
+	map_Ka texturesBase\metal.jpg
+	map_Kd texturesBase\metal.jpg
 
 newmtl 01___Default
 	Ns 10.0000
@@ -886,8 +914,8 @@ newmtl 01___Default
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\letrero.jpg
-	map_Kd maps\letrero.jpg
+	map_Ka texturesBase\letrero.jpg
+	map_Kd texturesBase\letrero.jpg
 
 newmtl 10___Default
 	Ns 10.0000
@@ -900,8 +928,8 @@ newmtl 10___Default
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\cielo.jpg
-	map_Kd maps\cielo.jpg
+	map_Ka texturesBase\cielo.jpg
+	map_Kd texturesBase\cielo.jpg
 
 newmtl peopleColors
 	Kd 0.5880 0.5880 0.5880
@@ -916,7 +944,7 @@ newmtl peopleColors
 	Ni 1.5200
 	Ke 0.0000 0.0000 0.0000
 	illum 2
-	map_Kd maps\world_people_colors.png
+	map_Kd texturesBase\world_people_colors.png
 
 newmtl 23___Default
 	Ns 10.0000
@@ -929,5 +957,287 @@ newmtl 23___Default
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\carretera.jpg
-	map_Kd maps\carretera.jpg
+	map_Ka texturesBase\carretera.jpg
+	map_Kd texturesBase\carretera.jpg
+
+newmtl girl_3_obj_lambert7SG
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.0000 0.0000 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\girl_1_all.jpg
+	map_Kd texturesBase\girl_1_all.jpg
+
+newmtl girl_3_obj_lambert9SG
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.0000 0.0000 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\girl_1_eye_lid.png
+	map_Kd texturesBase\girl_1_eye_lid.png
+
+newmtl uploads_files_2186411_Dining_table_table_and_Chair
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\None_albedo.jpg
+	map_Kd texturesBase\None_albedo.jpg
+
+newmtl asianBoy_Material_001
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\TubeSpongeSkin_Green_Color.png
+	map_Kd texturesBase\TubeSpongeSkin_Green_Color.png
+
+newmtl TubeSponge_Med_default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\TubeSpongeSkin_Orange_Color.png
+	map_Kd texturesBase\TubeSpongeSkin_Orange_Color.png
+
+newmtl iceberg_Furnace
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\iceberg_furnace_AlbedoTransparency.png
+	map_Kd texturesBase\iceberg_furnace_AlbedoTransparency.png
+
+newmtl asianBoy_Eye_R_asian_boy_008_mso
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\Stones_Batch01_Bauta_SmallStones_BaseColor.png
+	map_Kd texturesBase\Stones_Batch01_Bauta_SmallStones_BaseColor.png
+
+newmtl uploads_files_2186411_Dining_table_None
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\Stones_Batch01_LongStones_BaseColor.png
+	map_Kd texturesBase\Stones_Batch01_LongStones_BaseColor.png
+
+newmtl uploads_files_1958429_DiningTable_Chair_ClothMat
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\LotusFlower_Med_Color.png
+	map_Kd texturesBase\LotusFlower_Med_Color.png
+
+newmtl asianBoy_Eye_L_asian_boy_009_mso
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\TubeSpongeSkin_Orange_Color.png
+	map_Kd texturesBase\TubeSpongeSkin_Orange_Color.png
+
+newmtl perla
+	Ns 15.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 1.2780 1.2780 1.2780
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\perlado.jpg
+	map_Kd texturesBase\perlado.jpg
+
+newmtl asianBoy_Lower_Teeth_asian_boy_005_mso
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\Green-texture-paper_1920x1200.jpg
+	map_Kd texturesBase\Green-texture-paper_1920x1200.jpg
+
+newmtl roca
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\lambert1_Base_Color.jpeg
+	map_Kd texturesBase\lambert1_Base_Color.jpeg
+
+newmtl LITTLE_plant_Material_001
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\ice.jpg
+	map_Kd texturesBase\ice.jpg
+
+newmtl 18___Default
+	Ns 19.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.8190 0.8190 0.8190
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\DefaultMaterial_Base_Color.png
+	map_Kd texturesBase\DefaultMaterial_Base_Color.png
+	map_Ks texturesBase\DefaultMaterial_Metallic.png
+
+newmtl camera_cam
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\FocaB.jpg
+	map_Kd texturesBase\FocaB.jpg
+
+newmtl Tex
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.5000 0.5000 0.5000
+	Tr 0.0000
+	d 1.0000
+	Tf 0.0000 0.0000 0.0000
+	Pr 0.5678
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd texturesBase\charactor01_BaseColor.charector.png
+	map_Pr texturesBase\charactor01_Roughness.charector.png
+	norm texturesBase\charactor01_Normal.charector.png
+
+newmtl Wolf3D_Avatar
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.8000 0.8000 0.8000
+	Tr 0.0000
+	d 1.0000
+	Tf 0.0000 0.0000 0.0000
+	Pr 1.0000
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd texturesBase\Wolf3D_Avatar_DIFFUSE.jpg
+	norm texturesBase\Wolf3D_Avatar_NORMAL.jpg
+
+newmtl wire_204204204
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.8000 0.8000 0.8000
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.3500 0.3500 0.3500
+
+newmtl camera_lens
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\low_DefaultMaterial_AlbedoTransparency.png
+	map_Kd texturesBase\low_DefaultMaterial_AlbedoTransparency.png

@@ -288,13 +288,12 @@ int main()
 
 	//******************* Animales ************************
 	Model delfin("modelos/delfin/delfin_aro.obj"); //Delfin
-	Model orca("modelos/Peces/whale.obj");
+	Model orca("modelos/orca/whale.obj");
 
 	//***************** Decoración ************************
 	Model aro("modelos/juegos/aro.obj");
-	Model jeep("modelos/auto/Jeep_Renegade_2016_obj/Jeep_Renegade_2016.obj");
-	Model lambo("modelos/auto/Lambo/carroceria.obj");
-	Model llanta("modelos/auto/Lambo/wheel.obj");
+	Model sponge("modelos/decoracion/TubeSponge_Med.fbx");
+	
 
 	//**************** Animados ***************************
 	Model tib("modelos/Shark_/cuerpoTib.obj"); //Tiburon
@@ -306,8 +305,13 @@ int main()
 	Model medusa("modelos/medusa/medusa.obj");
 	//Model brazoDer("modelos/Pinguino/anim/brazoDer.obj");
 
-	ModelAnim pezBoca("modelos/Animados/pezBoca/pezX.fbx");
-	pezBoca.initShaders(animShader.ID);
+	Model car("modelos/auto/car/carroceria.obj");
+	Model llanta("modelos/auto/car/llanta.obj");
+	Model vidrioPilo("modelos/auto/car/vidrioPilo.obj"); 
+	Model vidrioCopi("modelos/auto/car/vidrioCopi.obj");
+
+	//ModelAnim pezBoca("modelos/Shark_/sharkAnim/sharkAnim.fbx");
+	//pezBoca.initShaders(animShader.ID);
 
 //*************************** Key Frames ***************************************
 	//Inicialización de KeyFrames
@@ -326,12 +330,12 @@ int main()
 	KeyFrame[0].rotDelf = 0.0f;
 
 	KeyFrame[1].saltoDelfinY = 800.0f;
-	KeyFrame[1].saltoDelfinZ = -2500.0f;
+	KeyFrame[1].saltoDelfinZ = -2000.0f;
 	KeyFrame[1].rotDelf = 180.0f;
 
 	KeyFrame[2].saltoDelfinY = 0.0f;
 	KeyFrame[2].saltoDelfinZ = -4000.0f;
-	KeyFrame[2].rotDelf = -180.0f;
+	KeyFrame[2].rotDelf = 360.0f;
 
 
 	// render loop
@@ -427,7 +431,7 @@ int main()
 		model = glm::scale(model, glm::vec3(1.2f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		//animacionPersonaje.Draw(animShader);
+		//pezBoca.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Segundo Personaje Animacion
@@ -456,33 +460,66 @@ int main()
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//base.Draw(staticShader);
+		base.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(1500.0f, 600.0f, -2500.0f));
 		model = glm::scale(model, glm::vec3(7.0f));
 		staticShader.setMat4("model", model);
 		aro.Draw(staticShader);
 
-		//Jeep
+		//carro
 		model = glm::mat4(1.0f);
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(2300.0f, 0.0f, 5300.0f));
+		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(2300.0f, 0.0f, 5300.0f));
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		jeep.Draw(staticShader);
+		car.Draw(staticShader);
+
+		model = glm::translate(tmp, glm::vec3(-130.0f, 40.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(120.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		llanta.Draw(staticShader); //llanta delDer
+
+		model = glm::translate(tmp, glm::vec3(-130.0f, 40.0f, -100.0f));
+		model = glm::scale(model, glm::vec3(120.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		llanta.Draw(staticShader); //llanta delIzq
+
+		model = glm::translate(tmp, glm::vec3(130.0f, 40.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(120.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		llanta.Draw(staticShader); //llanta trasDer
+
+		model = glm::translate(tmp, glm::vec3(130.0f, 40.0f, -100.0f));
+		model = glm::scale(model, glm::vec3(120.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		llanta.Draw(staticShader); //llanta trasIzq
+
+
+		model = glm::translate(tmp, glm::vec3(-80.0f, 40.0f, -100.0f));
+		model = glm::scale(model, glm::vec3(120.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		vidrioCopi.Draw(staticShader); //vidrioCopiloto
+
+
 
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::translate(model, glm::vec3(15.0f, 0.0f, 0.0f));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		model = glm::scale(model, glm::vec3(120.0f));
 		staticShader.setMat4("model", model);
-		lambo.Draw(staticShader);
+		//sponge.Draw(staticShader);
 
 		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, 12.9f));
 		//model = glm::rotate(model, glm::radians(giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader);	//Izq delantera
+		//llanta.Draw(staticShader);	//Izq delantera
 
 		//Lambo
 
@@ -494,7 +531,7 @@ int main()
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-7000.0f, 50.0f, 2000.0f));
 		model = glm::scale(model, glm::vec3(45.0f));
 		staticShader.setMat4("model", model);
-		orca.Draw(staticShader);
+		//orca.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animales animados
@@ -519,7 +556,7 @@ int main()
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(90.0f));
 		staticShader.setMat4("model", model);
-		medusa.Draw(staticShader);
+		//medusa.Draw(staticShader);
 
 		//Atun
 		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-1100.0f, 600.0f, -2800.0f));
@@ -546,7 +583,7 @@ int main()
 			model = glm::rotate(model, glm::radians(rotDelf), glm::vec3(0.0f, 0.0f, 1.0f));
 			model = glm::scale(model, glm::vec3(8.0f));
 			staticShader.setMat4("model", model);
-			delfin.Draw(staticShader);
+			//delfin.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario

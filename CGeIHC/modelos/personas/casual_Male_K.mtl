@@ -14,4 +14,4 @@ newmtl peopleColors
 	Ni 1.5200
 	Ke 0.0000 0.0000 0.0000
 	illum 2
-	map_Kd C:\Users\rodri\Desktop\CGeIHC\CGeIHC\modelos\personas\casual_Male_K.fbm\world_people_colors.png
+	map_Kd world_people_colors.png

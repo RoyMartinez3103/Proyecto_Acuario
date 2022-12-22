@@ -12,5 +12,5 @@ newmtl 01___Default
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka maps\colores.jpg
-	map_Kd maps\colores.jpg
+	map_Ka colores.jpg
+	map_Kd colores.jpg
