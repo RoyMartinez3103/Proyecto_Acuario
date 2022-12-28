@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
-# File Created: 18.12.2022 22:29:58
+# File Created: 27.12.2022 22:21:55
 
 newmtl Material__97
 	Ns 10.0000
@@ -1217,6 +1217,20 @@ newmtl Wolf3D_Avatar
 	illum 2
 	map_Kd texturesBase\Wolf3D_Avatar_DIFFUSE.jpg
 	norm texturesBase\Wolf3D_Avatar_NORMAL.jpg
+
+newmtl camera_tri
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka texturesBase\verde.jpg
+	map_Kd texturesBase\verde.jpg
 
 newmtl wire_204204204
 	Ns 32

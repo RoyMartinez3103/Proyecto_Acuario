@@ -80,10 +80,16 @@ bool	carro = false;
 
 //Animaciones peces
 float	movCola = 0.0f,
-		camina = 0.0f;
+		camina = 0.0f,
+		movOrcaY = 0.0f,
+		rotOrca = 0.0f,
+		nada = 0.0f,
+		rotPez = 0.0f;	
 
 bool	regresa = false,
-		regresaCan = false;
+		regresaCan = false,
+		saltOrca = true,
+		pecera = false;
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -91,18 +97,14 @@ float	posX = 0.0f,
 		posZ = 0.0f,
 		saltoDelfinY = 0.0f,
 		saltoDelfinZ = 0.0f,
-		rotDelf = 0.0f,
-		saltOrcaY = 0.0f,
-		rotOrca = 0.0f;
-
+		rotDelf = 0.0f;
+	
 float	incX = 0.0f,
 		incY = 0.0f,
 		incZ = 0.0f,
 		saltoDelfIncY = 0.0f,
 		saltoDelfIncZ = 0.0f,
-		rotDelfInc = 0.0f,
-		saltOrcaIncY = 0.0f,
-		rotOrcaInc = 0.0f;
+		rotDelfInc = 0.0f;
 
 #define SAVED_FRAMES 3
 #define MAX_FRAMES 9  //Se asigna la cantidad max de cuadros clave que puedo guardar
@@ -115,7 +117,6 @@ typedef struct _frame
 	float posY;		//Variable para PosicionY
 	float posZ;		//Variable para PosicionZ
 	float saltoDelfinY, saltoDelfinZ, rotDelf;
-	float saltOrcaY, rotOrca;
 }FRAME;
 
 
@@ -148,9 +149,6 @@ void resetElements(void)  //Realiza un reseteo cuando se manda a reproducir la a
 	saltoDelfinY = KeyFrame[0].saltoDelfinY;
 	saltoDelfinZ = KeyFrame[0].saltoDelfinZ;
 	rotDelf = KeyFrame[0].rotDelf;
-
-	saltOrcaY = KeyFrame[0].saltOrcaY;
-	rotOrca = KeyFrame[0].rotOrca;
 }
 
 void interpolation(void) //Incremento = posFinal - posInicial / #cuadrosClave
@@ -162,9 +160,6 @@ void interpolation(void) //Incremento = posFinal - posInicial / #cuadrosClave
 	saltoDelfIncY = (KeyFrame[playIndex + 1].saltoDelfinY - KeyFrame[playIndex].saltoDelfinY) / i_max_steps;
 	saltoDelfIncZ = (KeyFrame[playIndex + 1].saltoDelfinZ - KeyFrame[playIndex].saltoDelfinZ) / i_max_steps;
 	rotDelfInc = (KeyFrame[playIndex + 1].rotDelf - KeyFrame[playIndex].rotDelf) / i_max_steps;
-
-	saltOrcaIncY = (KeyFrame[playIndex + 1].saltOrcaY - KeyFrame[playIndex].saltOrcaY) / i_max_steps;
-	rotOrcaInc = (KeyFrame[playIndex + 1].rotOrca - KeyFrame[playIndex].rotOrca) / i_max_steps;
 }
 
 void animate(void) //Ayuda a animar los objetos de manera automática
@@ -204,23 +199,20 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 
 	//Animación auto
 	giroLlanta -= 5.0f;
-	//if (carro) {
 	movAuto_x -= 5.0f;
 	if (movAuto_x < -4800.0f) {
 		movAuto_x = 0.0f;
 	}
-	//}
-//Animación peces
-	//movCola += 0.5f;
+	//Animación peces
 	if (regresa) {
-		if (movCola > -45.0f)
-			movCola -= 2.0f;
+		if (movCola > -10.0f)
+			movCola -= 15.0f;
 		else
 			regresa = false;
 	}
 	else {
-		if (movCola < 90.0f)
-			movCola += 2.0f;
+		if (movCola < 80.0f)
+			movCola += 15.0f;
 		else
 			regresa = true;
 	}
@@ -237,6 +229,43 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 			camina += 3.0f;
 		else
 			regresaCan = true;
+	}
+	//Animación en cilindro
+	if (pecera) {
+		if (nada > -250.0f) {
+			nada -= 3.0f;
+			rotPez = -90.0f;
+		}
+		else pecera = false;
+	}
+	else {
+		if (nada < 80.0f) {
+			nada += 3.0f;
+			rotPez = 90.0f;
+		}
+		else
+			pecera = true;
+	}
+
+	//Animación orca
+	if (saltOrca) {
+		if (movOrcaY > -1500.0f) {
+			movOrcaY -= 100.0f;
+			if (rotOrca < 90.0f)
+				rotOrca -= 2.0f;
+		}
+		else
+			saltOrca = false;
+	}
+	else {
+		if (movOrcaY < 5000.0f) {
+			movOrcaY += 100.0f;
+			if (rotOrca > -180.0f)
+				rotOrca = 0.0f;
+		}
+		else
+			saltOrca = true;
+
 	}
 }
 	
@@ -339,11 +368,14 @@ int main()
 	Model cangrejo("modelos/cangrejo/crab/Crab.fbx");
 	Model cangrejoAz("modelos/cangrejo/blueCrab/cangrejoAz.obj");
 	Model cangrejoLi("modelos/cangrejo/littleCrab/crab.fbx");
+	Model pez1("modelos/Peces/TropicalFish/TropicalFish01.obj");
+	Model pez2("modelos/Peces/TropicalFish/TropicalFish02.obj");
+	Model pez3("modelos/Peces/TropicalFish/TropicalFish03.obj");
 
 	//***************** Decoración ************************
 	Model aro("modelos/juegos/aro.obj");
 	Model shell("modelos/decoracion/seashell.fbx");
-	//shell.initShaders(animShader.ID);
+	//Model tortuga ("modelos/Tortuga/Turtle.obj");
 
 	
 
@@ -360,10 +392,13 @@ int main()
 	Model llanta("modelos/auto/car/llanta.obj");
 
 	ModelAnim mariposa("modelos/Animados/butterflyFBX/butterflyFBX.fbx");
-	mariposa.initShaders(animShader.ID);
+	//mariposa.initShaders(animShader.ID);
 
-	//ModelAnim kraken("modelos/Animados/kraken-animation/source/Kraken.fbx");
-	//kraken.initShaders(animShader.ID);
+	ModelAnim kraken("modelos/Animados/kraken-animation/source/Kraken.fbx");
+	kraken.initShaders(animShader.ID);
+
+	//ModelAnim tortuga("modelos/Tortuga/turtleAnim/turtle.fbx");
+	//tortuga.initShaders(animShader.ID);
 
 //*************************** Key Frames ***************************************
 	//Inicialización de KeyFrames
@@ -488,17 +523,17 @@ int main()
 		// Segundo Personaje Animacion
 		// -------------------------------------------------------------------------------------------------------------------------
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-2000.0f, 600.0f, -4400.0f)); // translate it down so it's at the center of the scene
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(1500.0f, 30.0f, -2600.0f)); // translate it down so it's at the center of the scene
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, glfwGetTime()));
-		model = glm::scale(model, glm::vec3(6.0f));	// it's a bit too big for our scene, so scale it down
+		model = glm::scale(model, glm::vec3(2.0f));	// it's a bit too big for our scene, so scale it down
 		animShader.setMat4("model", model);
-		//kraken.Draw(animShader);
+		kraken.Draw(animShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-3000.0f, 900.0f, -4400.0f)); // translate it down so it's at the center of the scene
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-6500.0f, 200.0f, -4000.0f)); // translate it down so it's at the center of the scene
 		model = glm::scale(model, glm::vec3(4.0f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		//pezBoca.Draw(animShader);
+		//tortuga.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -557,9 +592,9 @@ int main()
 		// Animales
 		// -------------------------------------------------------------------------------------------------------------------------
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-7000.0f, -100.0f, 2000.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-7200.0f, -1500.0f + movOrcaY, 2000.0f));
 		model = glm::scale(model, glm::vec3(45.0f));
-		model = glm::rotate(model, glm::radians(rotOrca), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(-90.0f + rotOrca), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		orca.Draw(staticShader);
 
@@ -581,12 +616,37 @@ int main()
 		staticShader.setMat4("model", model);
 		cangrejoLi.Draw(staticShader);
 
-		 model = glm::translate(glm::mat4(1.0f), glm::vec3(-7200.0f, 5.0f, -4600.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1000.0f + nada, 250.0f, -2800.0f));
+		model = glm::scale(model, glm::vec3(0.3f));
+		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pez1.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1050.0f, 400.0f, -2800.0f));
+		model = glm::scale(model, glm::vec3(0.3f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pez2.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-800.0f, 800.0f, -2800.0f));
+		model = glm::scale(model, glm::vec3(0.3f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pez3.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-7200.0f, 100.0f, -4600.0f));
 		model = glm::scale(model, glm::vec3(3.0f));
+		 model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::rotate(tmp, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		shell.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-6500.0f, 600.0f, -4000.0f));
+		model = glm::scale(model, glm::vec3(5.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		//model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		shell.Draw(staticShader);
+		//tortuga.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animales animados
@@ -615,7 +675,7 @@ int main()
 
 		//Atun
 		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-1100.0f, 600.0f, -2800.0f));
-		model = glm::scale(model, glm::vec3(50.0f));
+		model = glm::scale(model, glm::vec3(30.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		tuna.Draw(staticShader);
@@ -623,7 +683,7 @@ int main()
 		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(50.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(movCola), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(70.0f));
+		model = glm::scale(model, glm::vec3(30.0f));
 		staticShader.setMat4("model", model);
 		tunaTail.Draw(staticShader);
 
@@ -638,7 +698,7 @@ int main()
 			model = glm::rotate(model, glm::radians(rotDelf), glm::vec3(0.0f, 0.0f, 1.0f));
 			model = glm::scale(model, glm::vec3(8.0f));
 			staticShader.setMat4("model", model);
-			//delfin.Draw(staticShader);
+			delfin.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
@@ -688,7 +748,7 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 	if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
 		carro = true;
 	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
-		saltoDelfinY -= 50.0f;
+		saltOrca = true;
 	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
 		saltoDelfinZ += 50.0f;
 	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
