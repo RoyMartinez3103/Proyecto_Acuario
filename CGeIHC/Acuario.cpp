@@ -84,7 +84,8 @@ float	movCola = 0.0f,
 		movOrcaY = 0.0f,
 		rotOrca = 0.0f,
 		nada = 0.0f,
-		rotPez = 0.0f;	
+		rotPez = 0.0f,
+		diagonal = 0.0f;	
 
 bool	regresa = false,
 		regresaCan = false,
@@ -249,7 +250,7 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 
 	//Animación orca
 	if (saltOrca) {
-		if (movOrcaY > -1500.0f) {
+		if (movOrcaY > -2000.0f) {
 			movOrcaY -= 100.0f;
 			if (rotOrca < 90.0f)
 				rotOrca -= 2.0f;
@@ -267,6 +268,7 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 			saltOrca = true;
 
 	}
+	diagonal += 2.0f;
 }
 	
 
@@ -371,6 +373,9 @@ int main()
 	Model pez1("modelos/Peces/TropicalFish/TropicalFish01.obj");
 	Model pez2("modelos/Peces/TropicalFish/TropicalFish02.obj");
 	Model pez3("modelos/Peces/TropicalFish/TropicalFish03.obj");
+	Model pez4("modelos/Peces/TropicalFish/TropicalFish07.obj");
+	Model pinguino("modelos/Pinguino/Penguin.obj");
+
 
 	//***************** Decoración ************************
 	Model aro("modelos/juegos/aro.obj");
@@ -399,6 +404,8 @@ int main()
 
 	//ModelAnim tortuga("modelos/Tortuga/turtleAnim/turtle.fbx");
 	//tortuga.initShaders(animShader.ID);
+	ModelAnim penguin("modelos/Pinguino/penguin/Penguin_SK.fbx");
+	penguin.initShaders(animShader.ID);
 
 //*************************** Key Frames ***************************************
 	//Inicialización de KeyFrames
@@ -455,7 +462,7 @@ int main()
 		staticShader.setVec3("pointLight[0].position", lightPosition); //Iluminación posicional 
 		staticShader.setVec3("pointLight[0].ambient", glm::vec3(0.5f, 0.5f, 0.5f));
 		staticShader.setVec3("pointLight[0].diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-		staticShader.setVec3("pointLight[0].specular", glm::vec3(0.0f, 0.0f, 0.0f));
+		staticShader.setVec3("pointLight[0].specular", glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setFloat("pointLight[0].constant", 0.08f); //Distancia a la que iluminan los rayos 
 		staticShader.setFloat("pointLight[0].linear", 0.009f); // ""
 		staticShader.setFloat("pointLight[0].quadratic", 0.032f);//potencia luz
@@ -464,8 +471,8 @@ int main()
 		staticShader.setVec3("pointLight[1].ambient", glm::vec3(0.0f, 0.2f, 0.0f));
 
 		staticShader.setVec3("pointLight[1].position", lightPosition2);
-		staticShader.setVec3("pointLight[1].diffuse", glm::vec3(0.0f, 0.0f, 0.0f));
-		staticShader.setVec3("pointLight[1].specular", glm::vec3(0.0f, 0.0f, 0.0f));
+		staticShader.setVec3("pointLight[1].diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
+		staticShader.setVec3("pointLight[1].specular", glm::vec3(0.0f, 0.0f, 1.0f));
 		staticShader.setFloat("pointLight[1].constant", 1.0f);
 		staticShader.setFloat("pointLight[1].linear", 0.009f);
 		staticShader.setFloat("pointLight[1].quadratic", 0.032f);
@@ -519,21 +526,17 @@ int main()
 		animShader.setMat4("model", model);
 		//mariposa.Draw(animShader);
 
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Segundo Personaje Animacion
-		// -------------------------------------------------------------------------------------------------------------------------
-
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(1500.0f, 30.0f, -2600.0f)); // translate it down so it's at the center of the scene
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, glfwGetTime()));
 		model = glm::scale(model, glm::vec3(2.0f));	// it's a bit too big for our scene, so scale it down
 		animShader.setMat4("model", model);
 		kraken.Draw(animShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-6500.0f, 200.0f, -4000.0f)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(4.0f));	// it's a bit too big for our scene, so scale it down
-		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-8300.0f, 50.0f, -2800.0f)); // translate it down so it's at the center of the scene
+		model = glm::scale(model, glm::vec3(0.8f));	// it's a bit too big for our scene, so scale it down
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		//tortuga.Draw(animShader);
+		penguin.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -622,28 +625,48 @@ int main()
 		staticShader.setMat4("model", model);
 		pez1.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1050.0f, 400.0f, -2800.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1050.0f + nada, 400.0f, -2800.0f));
 		model = glm::scale(model, glm::vec3(0.3f));
-		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		pez2.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-800.0f, 800.0f, -2800.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-800.0f + nada, 800.0f + diagonal, -2800.0f));
 		model = glm::scale(model, glm::vec3(0.3f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		pez3.Draw(staticShader);
 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-900.0f + nada, 100.0f + diagonal, -2800.0f));
+		model = glm::scale(model, glm::vec3(0.3f));
+		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pez4.Draw(staticShader);
+
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-7200.0f, 100.0f, -4600.0f));
 		model = glm::scale(model, glm::vec3(3.0f));
-		 model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		//model = glm::rotate(tmp, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		shell.Draw(staticShader);
 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-8300.0f, 50.0f, -3600.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		tmp = model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::rotate(tmp, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pinguino.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-8300.0f, 50.0f, -2000.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::rotate(tmp, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pinguino.Draw(staticShader);
+
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-6500.0f, 600.0f, -4000.0f));
 		model = glm::scale(model, glm::vec3(5.0f));
-		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		//model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		//tortuga.Draw(staticShader);
@@ -674,14 +697,14 @@ int main()
 		//medusa.Draw(staticShader);
 
 		//Atun
-		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-1100.0f, 600.0f, -2800.0f));
+		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-1100.0f + nada, 600.0f, -2800.0f));
 		model = glm::scale(model, glm::vec3(30.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		tuna.Draw(staticShader);
 		//COLA atun
 		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(50.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(movCola), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(30.0f));
 		staticShader.setMat4("model", model);
@@ -748,7 +771,7 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 	if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
 		carro = true;
 	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
-		saltOrca = true;
+		saltOrca ^= true;
 	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
 		saltoDelfinZ += 50.0f;
 	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
