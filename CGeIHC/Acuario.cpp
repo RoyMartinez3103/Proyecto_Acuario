@@ -259,7 +259,7 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 			saltOrca = false;
 	}
 	else {
-		if (movOrcaY < 5000.0f) {
+		if (movOrcaY < 3000.0f) {
 			movOrcaY += 100.0f;
 			if (rotOrca > -180.0f)
 				rotOrca = 0.0f;
@@ -268,7 +268,7 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 			saltOrca = true;
 
 	}
-	diagonal += 2.0f;
+	diagonal += 1.0f;
 }
 	
 
@@ -375,37 +375,43 @@ int main()
 	Model pez3("modelos/Peces/TropicalFish/TropicalFish03.obj");
 	Model pez4("modelos/Peces/TropicalFish/TropicalFish07.obj");
 	Model pinguino("modelos/Pinguino/Penguin.obj");
-
+	Model star("modelos/Peces/star.obj");
+	Model seaHorse("modelos/seahorse/Seahorse.obj");
+	//Model tortuga ("modelos/Tortuga/Turtle.obj");
+	Model medusa("modelos/medusa/medusa.obj");
+	Model medusa2("modelos/medusa/jellyfish/meduselopoly.obj");
+	Model ray("modelos/mantaraya/ray.obj");
+	Model snail("modelos/caracol/snail.obj");
+	Model pulpo("modelos/pulpo/pulpo.obj");
 
 	//***************** Decoración ************************
 	Model aro("modelos/juegos/aro.obj");
 	Model shell("modelos/decoracion/seashell.fbx");
-	//Model tortuga ("modelos/Tortuga/Turtle.obj");
-
 	
-
 	//**************** Animados ***************************
 	Model tib("modelos/Shark_/cuerpoTib.obj"); //Tiburon
 	Model tibTail("modelos/Shark_/colaTib.obj");
 
 	Model tuna("modelos/Peces/cuerpoTuna.obj"); //Atún
 	Model tunaTail("modelos/Peces/colaTuna.obj");
-	
-	Model medusa("modelos/medusa/medusa.obj");
 
 	Model car("modelos/auto/car/carroceria.obj");
 	Model llanta("modelos/auto/car/llanta.obj");
 
-	ModelAnim mariposa("modelos/Animados/butterflyFBX/butterflyFBX.fbx");
+	//ModelAnim mariposa("modelos/Animados/butterflyFBX/butterflyFBX.fbx");
 	//mariposa.initShaders(animShader.ID);
 
-	ModelAnim kraken("modelos/Animados/kraken-animation/source/Kraken.fbx");
-	kraken.initShaders(animShader.ID);
+	//ModelAnim kraken("modelos/Animados/kraken-animation/source/Kraken.fbx");
+	//kraken.initShaders(animShader.ID);
 
 	//ModelAnim tortuga("modelos/Tortuga/turtleAnim/turtle.fbx");
 	//tortuga.initShaders(animShader.ID);
-	ModelAnim penguin("modelos/Pinguino/penguin/Penguin_SK.fbx");
-	penguin.initShaders(animShader.ID);
+
+	//ModelAnim penguin("modelos/Pinguino/penguin/Penguin_SK.fbx");
+	//penguin.initShaders(animShader.ID);
+
+	//ModelAnim brinca("modelos/Animados/kidJump2.fbx");
+	//brinca.initShaders(animShader.ID);
 
 //*************************** Key Frames ***************************************
 	//Inicialización de KeyFrames
@@ -520,23 +526,23 @@ int main()
 		animShader.setVec3("light.direction", lightDirection);
 		animShader.setVec3("viewPos", camera.Position);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-50.0f, 200.0f, 0.0f)); // translate it down so it's at the center of the scene
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 20.0f, -400.0f)); // translate it down so it's at the center of the scene
 		model = glm::scale(model, glm::vec3(2.0f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		//mariposa.Draw(animShader);
+		//brinca.Draw(animShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(1500.0f, 30.0f, -2600.0f)); // translate it down so it's at the center of the scene
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, glfwGetTime()));
-		model = glm::scale(model, glm::vec3(2.0f));	// it's a bit too big for our scene, so scale it down
+		model = glm::scale(model, glm::vec3(3.0f));	// it's a bit too big for our scene, so scale it down
 		animShader.setMat4("model", model);
-		kraken.Draw(animShader);
+		//kraken.Draw(animShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-8300.0f, 50.0f, -2800.0f)); // translate it down so it's at the center of the scene
 		model = glm::scale(model, glm::vec3(0.8f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		penguin.Draw(animShader);
+		//penguin.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -605,7 +611,7 @@ int main()
 		model = glm::scale(model, glm::vec3(18.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		cangrejo.Draw(staticShader);
+		//cangrejo.Draw(staticShader);
 		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-6500.0f, 10.0f, -4500.0f));
 		model = glm::scale(model, glm::vec3(10.0f));
@@ -619,7 +625,7 @@ int main()
 		staticShader.setMat4("model", model);
 		cangrejoLi.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1000.0f + nada, 250.0f, -2800.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1000.0f, 250.0f, -2800.0f));
 		model = glm::scale(model, glm::vec3(0.3f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
@@ -629,24 +635,24 @@ int main()
 		model = glm::scale(model, glm::vec3(0.3f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		pez2.Draw(staticShader);
+		//pez2.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-800.0f + nada, 800.0f + diagonal, -2800.0f));
 		model = glm::scale(model, glm::vec3(0.3f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		pez3.Draw(staticShader);
+		//pez3.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-900.0f + nada, 100.0f + diagonal, -2800.0f));
 		model = glm::scale(model, glm::vec3(0.3f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		pez4.Draw(staticShader);
+		//pez4.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-7200.0f, 100.0f, -4600.0f));
 		model = glm::scale(model, glm::vec3(3.0f));
-		model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		shell.Draw(staticShader);
 
@@ -664,12 +670,45 @@ int main()
 		staticShader.setMat4("model", model);
 		pinguino.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-6500.0f, 600.0f, -4000.0f));
-		model = glm::scale(model, glm::vec3(5.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		//model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1800.0f, 400.0f, -3500.0f));
 		staticShader.setMat4("model", model);
-		//tortuga.Draw(staticShader);
+		star.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-6500.0f, 600.0f, -5000.0f));
+		model = glm::scale(model, glm::vec3(120.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		snail.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-3000.0f, 600.0f, -700.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		seaHorse.Draw(staticShader);
+
+		//Medusas
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1800.0f, 500.0f + nada, -4500.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(90.0f));
+		staticShader.setMat4("model", model);
+		medusa.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-3000.0f, 800.0f, -4500.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(90.0f));
+		staticShader.setMat4("model", model);
+		medusa2.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-2500.0f, 500.0f, -700.0f));
+		model = glm::scale(model, glm::vec3(20.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		ray.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-2000.0f, 800.0f, -700.0f));
+		model = glm::scale(model, glm::vec3(0.15f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pulpo.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animales animados
@@ -687,28 +726,21 @@ int main()
 		model = glm::rotate(model, glm::radians(movCola), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
-		//tibTail.Draw(staticShader);
-
-		//Medusa
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1800.0f, 500.0f, -4500.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(90.0f));
-		staticShader.setMat4("model", model);
-		//medusa.Draw(staticShader);
+		//tibTail.Draw(staticShader);	
 
 		//Atun
 		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-1100.0f + nada, 600.0f, -2800.0f));
 		model = glm::scale(model, glm::vec3(30.0f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		tuna.Draw(staticShader);
+		//tuna.Draw(staticShader);
 		//COLA atun
 		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(movCola), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(30.0f));
 		staticShader.setMat4("model", model);
-		tunaTail.Draw(staticShader);
+		//tunaTail.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animados KeyFrames
