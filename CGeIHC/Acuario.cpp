@@ -30,6 +30,9 @@
 #include <stdlib.h> //Librerias adicionales
 #include <string.h>
 #include <fstream>
+#include <mmsystem.h>
+#include <playsoundapi.h>
+#pragma comment(lib,"winmm.lib")
 
 //#include <SDL/SDL_mixer.h>
 
@@ -64,10 +67,9 @@ double	deltaTime = 0.0f,
 glm::vec3 lightPosition(0.0f, 4.0f, -10.0f); //apunta de afuera del escenario, como si fuera un proyector
 glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 glm::vec3 lightPosition2(1.0f, 1.0f, 5.0f);
+glm::vec3 lightPosition3(0.0f, 0.0f, 0.0f);
 
 // posiciones
-float	orienta = 0.0f;
-
 bool	animacion = false;
 
 //Animación auto
@@ -80,7 +82,9 @@ bool	carro = false;
 
 //Animaciones peces
 float	movCola = 0.0f,
+		concha = 0.0f,
 		camina = 0.0f,
+		caminaPin = 0.0f,
 		movOrcaY = 0.0f,
 		rotOrca = 0.0f,
 		nada = 0.0f,
@@ -90,7 +94,9 @@ float	movCola = 0.0f,
 bool	regresa = false,
 		regresaCan = false,
 		saltOrca = true,
-		pecera = false;
+		pecera = false,
+		abre = false,
+		sound = false;
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -163,6 +169,16 @@ void interpolation(void) //Incremento = posFinal - posInicial / #cuadrosClave
 	rotDelfInc = (KeyFrame[playIndex + 1].rotDelf - KeyFrame[playIndex].rotDelf) / i_max_steps;
 }
 
+//Audio
+const wchar_t* path = TEXT("delfin.wav");
+void musica() {
+	if (sound) {
+		PlaySound(path, NULL, SND_FILENAME | SND_ASYNC);
+		printf("\nSe reprodujo\n");
+		sound = false;
+	}
+}
+
 void animate(void) //Ayuda a animar los objetos de manera automática
 {
 	if (play)
@@ -193,7 +209,6 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 			saltoDelfinY += saltoDelfIncY;
 			saltoDelfinZ += saltoDelfIncZ;
 			rotDelf += rotDelfInc;
-
 			i_curr_steps++;
 		}
 	}
@@ -201,6 +216,7 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 	//Animación auto
 	giroLlanta -= 5.0f;
 	movAuto_x -= 5.0f;
+
 	if (movAuto_x < -4800.0f) {
 		movAuto_x = 0.0f;
 	}
@@ -259,16 +275,48 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 			saltOrca = false;
 	}
 	else {
-		if (movOrcaY < 3000.0f) {
+		if (movOrcaY < 5000.0f) {
 			movOrcaY += 100.0f;
 			if (rotOrca > -180.0f)
 				rotOrca = 0.0f;
 		}
 		else
 			saltOrca = true;
-
 	}
+
+	//Animación concha
+	if (abre) {
+		if (concha > 45.0f)
+			concha -= 2.0f;
+		else
+			regresa = false;
+	}
+	else {
+		if (concha < 80.0f)
+			concha += 2.0f;
+		else
+			regresa = true;
+	}
+
+	//Animación pinguino
+	if (pecera) {
+		if (caminaPin > -4000.0f) {
+			caminaPin -= 2.0f;
+			rotPez = -90.0f;
+		}
+		else pecera = false;
+	}
+	else {
+		if (caminaPin < 20000.0f) {
+			caminaPin += 2.0f;
+			rotPez = 90.0f;
+		}
+		else
+			pecera = true;
+	}
+
 	diagonal += 1.0f;
+	musica();
 }
 	
 
@@ -289,19 +337,6 @@ int main()
 #ifdef __APPLE__
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
-	/*SDL_Init(SDL_INIT_AUDIO);
-	//************* audio
-	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-	Mix_Music* music = Mix_LoadMUS("resources/audio/delfin.wav");
-	if (!music) {
-		cout << "Music error:" << Mix_GetError() << endl;
-	}
-	//Mix_Chunk* sound = Mix_LoadWAV();
-	/*if (!sound) {
-		cout << "Sound error:" << Mix_GetError() << endl;
-	}
-
-	Mix_PlayMusic(music, -1);*/
 
 	// glfw window creation
 	// --------------------
@@ -374,7 +409,7 @@ int main()
 	Model pez2("modelos/Peces/TropicalFish/TropicalFish02.obj");
 	Model pez3("modelos/Peces/TropicalFish/TropicalFish03.obj");
 	Model pez4("modelos/Peces/TropicalFish/TropicalFish07.obj");
-	Model pinguino("modelos/Pinguino/Penguin.obj");
+	Model pinguino("modelos/Pinguino/Penguino.obj");
 	Model star("modelos/Peces/star.obj");
 	Model seaHorse("modelos/seahorse/Seahorse.obj");
 	//Model tortuga ("modelos/Tortuga/Turtle.obj");
@@ -386,7 +421,7 @@ int main()
 
 	//***************** Decoración ************************
 	Model aro("modelos/juegos/aro.obj");
-	Model shell("modelos/decoracion/seashell.fbx");
+	Model shell("modelos/decoracion/concha.obj");
 	
 	//**************** Animados ***************************
 	Model tib("modelos/Shark_/cuerpoTib.obj"); //Tiburon
@@ -407,11 +442,11 @@ int main()
 	//ModelAnim tortuga("modelos/Tortuga/turtleAnim/turtle.fbx");
 	//tortuga.initShaders(animShader.ID);
 
-	//ModelAnim penguin("modelos/Pinguino/penguin/Penguin_SK.fbx");
-	//penguin.initShaders(animShader.ID);
+	ModelAnim penguin("modelos/Pinguino/penguin/PenguinAnim.fbx");
+	penguin.initShaders(animShader.ID);
 
-	//ModelAnim brinca("modelos/Animados/kidJump2.fbx");
-	//brinca.initShaders(animShader.ID);
+	ModelAnim brinca("modelos/Animados/kidJump2.fbx");
+	brinca.initShaders(animShader.ID);
 
 //*************************** Key Frames ***************************************
 	//Inicialización de KeyFrames
@@ -442,7 +477,7 @@ int main()
 	while (!glfwWindowShouldClose(window))
 	{
 		skyboxShader.setInt("skybox", 0);
-		
+
 		// per-frame time logic
 		// --------------------
 		lastFrame = SDL_GetTicks();
@@ -476,6 +511,14 @@ int main()
 		staticShader.setVec3("pointLight[1].position", glm::vec3(-80.0, 3.0f, 0.0f));
 		staticShader.setVec3("pointLight[1].ambient", glm::vec3(0.0f, 0.2f, 0.0f));
 
+		staticShader.setVec3("pointLight[2].position", lightPosition3); //Iluminación posicional 
+		//staticShader.setVec3("pointLight[2].ambient", glm::vec3(0.0f, 0.0f, 0.0f));
+		staticShader.setVec3("pointLight[2].diffuse", glm::vec3(0.0f, 0.0f, 1.0f));
+		//staticShader.setVec3("pointLight[2].specular", glm::vec3(0.0f, 0.0f, 0.0f));
+		staticShader.setFloat("pointLight[2].constant", 0.5f); //Distancia a la que iluminan los rayos 
+		staticShader.setFloat("pointLight[2].linear", 0.009f); // ""
+		staticShader.setFloat("pointLight[2].quadratic", 0.032f);//potencia luz
+
 		staticShader.setVec3("pointLight[1].position", lightPosition2);
 		staticShader.setVec3("pointLight[1].diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
 		staticShader.setVec3("pointLight[1].specular", glm::vec3(0.0f, 0.0f, 1.0f));
@@ -508,7 +551,7 @@ int main()
 		glm::vec3 lightColor = glm::vec3(0.6f);
 		glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
 		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.75f);
-		
+
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Personaje Animacion
@@ -517,7 +560,7 @@ int main()
 		animShader.use();
 		animShader.setMat4("projection", projection);
 		animShader.setMat4("view", view);
-	
+
 		animShader.setVec3("material.specular", glm::vec3(0.5f));
 		animShader.setFloat("material.shininess", 32.0f);
 		animShader.setVec3("light.ambient", ambientColor);
@@ -526,11 +569,11 @@ int main()
 		animShader.setVec3("light.direction", lightDirection);
 		animShader.setVec3("viewPos", camera.Position);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 20.0f, -400.0f)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(2.0f));	// it's a bit too big for our scene, so scale it down
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 10.0f, -2200.0f)); // translate it down so it's at the center of the scene
+		model = glm::scale(model, glm::vec3(3.0f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		//brinca.Draw(animShader);
+		brinca.Draw(animShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(1500.0f, 30.0f, -2600.0f)); // translate it down so it's at the center of the scene
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, glfwGetTime()));
@@ -538,11 +581,11 @@ int main()
 		animShader.setMat4("model", model);
 		//kraken.Draw(animShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-8300.0f, 50.0f, -2800.0f)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(0.8f));	// it's a bit too big for our scene, so scale it down
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-8500.0f, 50.0f, -2500.0f + caminaPin)); // translate it down so it's at the center of the scene
+		model = glm::scale(model, glm::vec3(2.0f));	// it's a bit too big for our scene, so scale it down
+		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		//penguin.Draw(animShader);
+		penguin.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -605,14 +648,14 @@ int main()
 		model = glm::scale(model, glm::vec3(45.0f));
 		model = glm::rotate(model, glm::radians(-90.0f + rotOrca), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		orca.Draw(staticShader);
+		//orca.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-7200.0f + camina, 30.0f, -3800.0f));
 		model = glm::scale(model, glm::vec3(18.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//cangrejo.Draw(staticShader);
-		
+		cangrejo.Draw(staticShader);
+
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-6500.0f, 10.0f, -4500.0f));
 		model = glm::scale(model, glm::vec3(10.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -625,7 +668,7 @@ int main()
 		staticShader.setMat4("model", model);
 		cangrejoLi.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1000.0f, 250.0f, -2800.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1000.0f + nada, 250.0f, -2800.0f));
 		model = glm::scale(model, glm::vec3(0.3f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
@@ -635,46 +678,50 @@ int main()
 		model = glm::scale(model, glm::vec3(0.3f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//pez2.Draw(staticShader);
+		pez2.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-800.0f + nada, 800.0f + diagonal, -2800.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-800.0f + nada, 800.0f, -2800.0f));
 		model = glm::scale(model, glm::vec3(0.3f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//pez3.Draw(staticShader);
+		pez3.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-900.0f + nada, 100.0f + diagonal, -2800.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-950.0f + nada, 100.0f + diagonal, -2800.0f));
 		model = glm::scale(model, glm::vec3(0.3f));
-		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//pez4.Draw(staticShader);
+		pez4.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-7200.0f, 100.0f, -4600.0f));
-		model = glm::scale(model, glm::vec3(3.0f));
-		//model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		//model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-7300.0f, 0.0f, -4700.0f));
+		model = glm::scale(model, glm::vec3(8.0f));
+		model = glm::rotate(model, glm::radians(concha), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		shell.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-8300.0f, 50.0f, -3600.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-8600.0f, 50.0f, -3600.0f));
 		model = glm::scale(model, glm::vec3(3.0f));
-		tmp = model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		//model = glm::rotate(tmp, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		pinguino.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-8300.0f, 50.0f, -2000.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-8600.0f, 50.0f, -3400.0f));
 		model = glm::scale(model, glm::vec3(3.0f));
-		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		//model = glm::rotate(tmp, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(120.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		pinguino.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1800.0f, 400.0f, -3500.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-8400.0f, 50.0f, -3500.0f));
+		model = glm::scale(model, glm::vec3(1.5f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pinguino.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-2100.0f, 400.0f, -4100.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 		staticShader.setMat4("model", model);
 		star.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-6500.0f, 600.0f, -5000.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-6500.0f, 600.0f, -4900.0f));
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
@@ -686,29 +733,29 @@ int main()
 		seaHorse.Draw(staticShader);
 
 		//Medusas
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1800.0f, 500.0f + nada, -4500.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1800.0f, 800.0f + nada, -4500.0f));
+		model = glm::rotate(model, glm::radians(diagonal), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(90.0f));
 		staticShader.setMat4("model", model);
-		medusa.Draw(staticShader);
+		//medusa.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-3000.0f, 800.0f, -4500.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(90.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-3200.0f, 1500.0f - nada, -4500.0f));
+		model = glm::rotate(model, glm::radians(-diagonal), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(80.0f));
 		staticShader.setMat4("model", model);
-		medusa2.Draw(staticShader);
+		//medusa2.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-2500.0f, 500.0f, -700.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-2500.0f, 700.0f, -700.0f));
 		model = glm::scale(model, glm::vec3(20.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		ray.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-2000.0f, 800.0f, -700.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-2500.0f, 100.0f, -650.0f));
 		model = glm::scale(model, glm::vec3(0.15f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		pulpo.Draw(staticShader);
+		//pulpo.Draw(staticShader); //Si se activa se traba la ejecución
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animales animados
@@ -719,28 +766,28 @@ int main()
 		model = glm::scale(model, glm::vec3(8.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//tib.Draw(staticShader);
+		tib.Draw(staticShader);
 		//Cola tiburon
 		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(movCola), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
-		//tibTail.Draw(staticShader);	
+		tibTail.Draw(staticShader);	
 
 		//Atun
 		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(-1100.0f + nada, 600.0f, -2800.0f));
 		model = glm::scale(model, glm::vec3(30.0f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//tuna.Draw(staticShader);
+		tuna.Draw(staticShader);
 		//COLA atun
 		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(movCola), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(30.0f));
 		staticShader.setMat4("model", model);
-		//tunaTail.Draw(staticShader);
+		tunaTail.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animados KeyFrames
@@ -800,14 +847,14 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, (float)deltaTime);
 	//To Configure Model
-	if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
+	/*if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
 		carro = true;
 	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
 		saltOrca ^= true;
 	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
-		saltoDelfinZ += 50.0f;
-	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
-		saltoDelfinZ -= 50.0f;
+		sound = true;*/
+	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+		abre ^= true;
 	//Mix_PlayChannel(-1, sound, 0);
 
 
