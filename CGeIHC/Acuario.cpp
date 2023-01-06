@@ -34,7 +34,6 @@
 #include <playsoundapi.h>
 #pragma comment(lib,"winmm.lib")
 
-//#include <SDL/SDL_mixer.h>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -64,7 +63,7 @@ double	deltaTime = 0.0f,
 		lastFrame = 0.0f;
 
 //Lighting
-glm::vec3 lightPosition(0.0f, 4.0f, -10.0f); //apunta de afuera del escenario, como si fuera un proyector
+glm::vec3 lightPosition(0.0f, 4.0f, -10.0f); 
 glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 glm::vec3 lightPosition2(1.0f, 1.0f, 5.0f);
 
@@ -88,28 +87,33 @@ float	movCola = 0.0f,
 		rotOrca = 0.0f,
 		nada = 0.0f,
 		nadaGlobo = 0.0f,
+		nadaT = 0.0f,
 		rotPez = 0.0f,
+		rotC = 0.0f,
+		rotPin = 0.0f,
+	    rotG = 0.0f,
+		rotT = 0.0f,
 		crece = 1.0f,
 		nadaCaballo = 0.0f,
 		nadaCaballoY = 0.0f,
 		rotMed = 0.0f;
 
-int edo = 0;
-
 bool	regresa = false,
-		cola = true,
+		cola = false,
 		regresaCan = false,
 		saltOrca = true,
 		pecera = false,
 		peceraG = false,
 		peceraPin = false,
+		peceraC = false,
+		peceraT = false,
 		abre = false,
 		inflar = false,
 		inflarSound = false,
 		delfinSound = false,
 		sound = false;
 
-//Keyframes (Manipulación y dibujo)
+//Keyframes
 float	posX = 0.0f,
 		posY = 0.0f,
 		posZ = 0.0f,
@@ -127,30 +131,27 @@ float	incX = 0.0f,
 //Audio de fondo
 const wchar_t* path = TEXT("burbujas.wav");
 const wchar_t* pathDelf = TEXT("delfinSound.wav");
-const wchar_t* pathGlobo = TEXT("inflando.wav");
-
-
 
 #define SAVED_FRAMES 3
-#define MAX_FRAMES 9  //Se asigna la cantidad max de cuadros clave que puedo guardar
-int i_max_steps = 60;  //Determina los cuadros intermedios, determina la velocidad a la que se mueve la animacion
+#define MAX_FRAMES 9 
+int i_max_steps = 60;  
 int i_curr_steps = 0;
 typedef struct _frame
 {
 	//Variables para GUARDAR Key Frames
-	float posX;		//Variable para PosicionX
-	float posY;		//Variable para PosicionY
-	float posZ;		//Variable para PosicionZ
+	float posX;		
+	float posY;		
+	float posZ;		
 	float saltoDelfinY, saltoDelfinZ, rotDelf;
 }FRAME;
 
 
-FRAME KeyFrame[MAX_FRAMES]; //el arreglo contiene la cantidad de elementos guardados por las variables anteriores
-int FrameIndex = SAVED_FRAMES;			//Variable que guarda los cuadros clave, si es !0 quiere decir que ya hay guardados
+FRAME KeyFrame[MAX_FRAMES];
+int FrameIndex = SAVED_FRAMES;		
 bool play = false;
 int playIndex = 0;
 
-void saveFrame(void) //Permite guardar los frames
+void saveFrame(void) 
 {
 	std::cout << "Frame Index = " << FrameIndex << std::endl;
 
@@ -165,9 +166,9 @@ void saveFrame(void) //Permite guardar los frames
 	FrameIndex++;
 }
 
-void resetElements(void)  //Realiza un reseteo cuando se manda a reproducir la animacion
+void resetElements(void)  
 {
-	posX = KeyFrame[0].posX;  //El arreglo comienza desde el primer cuadro clave guardado i=0 en el arreglo
+	posX = KeyFrame[0].posX; 
 	posY = KeyFrame[0].posY;
 	posZ = KeyFrame[0].posZ;
 
@@ -176,9 +177,9 @@ void resetElements(void)  //Realiza un reseteo cuando se manda a reproducir la a
 	rotDelf = KeyFrame[0].rotDelf;
 }
 
-void interpolation(void) //Incremento = posFinal - posInicial / #cuadrosClave
+void interpolation(void)
 {
-	incX = (KeyFrame[playIndex + 1].posX - KeyFrame[playIndex].posX) / i_max_steps; //PlayIndex determina el cuadro inicial de cada seccion
+	incX = (KeyFrame[playIndex + 1].posX - KeyFrame[playIndex].posX) / i_max_steps;
 	incY = (KeyFrame[playIndex + 1].posY - KeyFrame[playIndex].posY) / i_max_steps;
 	incZ = (KeyFrame[playIndex + 1].posZ - KeyFrame[playIndex].posZ) / i_max_steps;
 
@@ -195,23 +196,23 @@ void musica() {
 	}
 }
 
-void animate(void) //Ayuda a animar los objetos de manera automática
+void animate(void) 
 {
 	if (play)
 	{
-		if (i_curr_steps >= i_max_steps) //end of animation between frames?
+		if (i_curr_steps >= i_max_steps) 
 		{
 			playIndex++;
-			if (playIndex > FrameIndex - 2)	//end of total animation?
+			if (playIndex > FrameIndex - 2)	
 			{
 				std::cout << "Animation ended" << std::endl;
 				playIndex = 0;
 				play = false;
 			}
-			else //Next frame interpolations
+			else 
 			{
-				i_curr_steps = 0; //Reset counter
-								  //Interpolation
+				i_curr_steps = 0; 
+								 
 				interpolation();
 			}
 		}
@@ -239,7 +240,6 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 		}
 	}
 	//Animación peces
-	if (cola) {
 		if (regresa) {
 			if (movCola > -10.0f)
 				movCola -= 15.0f;
@@ -252,9 +252,8 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 			else
 				regresa = true;
 		}
-	}
 
-	//Animación cangrejo
+//Animación cangrejo
 	if (regresaCan) {
 		if (camina > -600.0f)
 			camina -= 3.0f;
@@ -267,7 +266,24 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 		else
 			regresaCan = true;
 	}
-	//Animación en cilindro
+
+	// Animación Tortuga
+	if (peceraT) {
+		if (nadaT > -2500.0f) {
+			nadaT -= 5.0f;
+			rotT = 180.0f;
+		}
+		else peceraT = false;
+	}
+	else {
+		if (nadaT < 200.0f) {
+			nadaT += 5.0f;
+			rotT = 0.0f;
+		}
+		else
+			peceraT = true;
+	}
+//Animación en cilindro
 	if (pecera) {
 		if (nada > -250.0f) {
 			nada -= 3.0f;
@@ -284,7 +300,7 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 			pecera = true;
 	}
 
-	//Animación orca
+//Animación orca
 	if (saltOrca) {
 		if (movOrcaY > -2000.0f) {
 			movOrcaY -= 100.0f;
@@ -304,7 +320,7 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 			saltOrca = true;
 	}
 
-	//Animación concha
+//Animación concha
 	if (abre) {
 		if (concha > 45.0f)
 			concha -= 2.0f;
@@ -318,24 +334,24 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 			regresa = true;
 	}
 
-	//Animación pinguino
+//Animación pinguino
 	if (peceraPin) {
 		if (caminaPin > -1200.0f) {
-			caminaPin -= 2.0f;
-			rotPez = 90.0f;
+			caminaPin -= 5.0f;
+			rotPin = -90.0f;
 		}
 		else peceraPin = false;
 	}
 	else {
 		if (caminaPin < 390.0f) {
-			caminaPin += 2.0f;
-			rotPez = -90.0f;
+			caminaPin += 5.0f;
+			rotPin = 90.0f;
 		}
 		else
 			peceraPin = true;
 	}
 
-	//Animación pez globo
+//Animación pez globo
 	if (inflar)
 		crece = 12.0f;
 	else
@@ -344,14 +360,14 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 	if (peceraG) {
 		if (nadaGlobo > -1100.0f) {
 			nadaGlobo -= 3.0f;
-			rotPez = -90.0f;
+			rotG = -90.0f;
 		}
 		else peceraG = false;
 	}
 	else {
 		if (nadaGlobo < 900.0f) {
 			nadaGlobo += 3.0f;
-			rotPez = 90.0f;
+			rotG = 90.0f;
 		}
 		else
 			peceraG = true;
@@ -364,13 +380,21 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 		delfinSound = false;
 	}
 //Animación caballito
-	if (nadaCaballo < 30.0f) {
-		nadaCaballo += 2.0f;
-		//nadaCaballoY += 2.0f;
+	if (peceraC) {
+		if (nadaCaballo > -200.0f) {
+			nadaCaballo -= 3.0f;
+				rotC = -90.0f;
+			}
+		else peceraC = false;
+	 }
+	else {
+		if (nadaCaballo < 1800.0f){
+			nadaCaballo += 3.0f;
+				rotC = 90.0f;
+		}
+		else
+			peceraC = true;
 	}
-	else
-		nadaCaballo -= 2.0f;
-
 
 	rotMed += 1.5f;
 	musica();
@@ -465,12 +489,11 @@ int main()
 	Model pinguino("modelos/Pinguino/Penguino.obj");
 	Model star("modelos/Peces/star.obj");
 	Model seaHorse("modelos/seahorse/Seahorse.obj");
-	Model tortuga ("modelos/Tortuga/Turtle.obj");
+	Model tortuga("modelos/Tortuga/Turtle.obj");
 	Model medusa("modelos/medusa/medusa.obj");
 	Model medusa2("modelos/medusa/jellyfish/meduselopoly.obj");
 	Model ray("modelos/mantaraya/ray.obj");
 	Model snail("modelos/caracol/snail.obj");
-	//Model pulpo("modelos/pulpo/pulpo.obj");
 	Model globo("modelos/Peces/globo/pezGlobo.obj");
 	Model pezLuz("modelos/Peces/PezLuz/pezLuz.obj");
 	Model pez1("modelos/Peces/TropicalFish/TropicalFish01.obj");
@@ -481,10 +504,13 @@ int main()
 	//***************** Decoración ************************
 	Model aro("modelos/juegos/aro.obj");
 	Model shell("modelos/decoracion/concha.obj");
-	
+
 	//**************** Animados ***************************
-	//Model car("modelos/auto/car/carroceria.obj");
-	//Model llanta("modelos/auto/car/llanta.obj");
+	Model car("modelos/auto/car/carroceria.obj");
+	Model llanta("modelos/auto/car/llanta.obj");
+
+	Model cuerpo("modelos/Peces/cuerpo.obj");
+	Model cola("modelos/Peces/cola.obj");
 
 	ModelAnim kraken("modelos/Animados/kraken-animation/source/Kraken.fbx");
 	kraken.initShaders(animShader.ID);
@@ -495,8 +521,8 @@ int main()
 	ModelAnim penguin2("modelos/Pinguino/penguin/Penguin_SK.fbx");
 	penguin2.initShaders(animShader.ID);
 
-	//ModelAnim brinca("modelos/Animados/kidJump2.fbx");
-	//brinca.initShaders(animShader.ID);
+	ModelAnim brinca("modelos/Animados/kidJump2.fbx");
+	brinca.initShaders(animShader.ID);
 
 //*************************** Key Frames ***************************************
 	//Inicialización de KeyFrames
@@ -541,22 +567,21 @@ int main()
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		// don't forget to enable shader before setting uniforms
 		staticShader.use();
-		//Setup Advanced Lights ----- iluminación direccional (sol)
+
 		staticShader.setVec3("viewPos", camera.Position);
 		staticShader.setVec3("dirLight.direction", lightDirection);
-		staticShader.setVec3("dirLight.ambient", glm::vec3(0.5f, 0.5f, 0.5f));//Ilumina las caras iluminadas
-		staticShader.setVec3("dirLight.diffuse", glm::vec3(0.8f, 0.8f, 0.8f)); //Ilumina las caras más ilumindas
-		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.0f)); //Reflejos de las superficies
+		staticShader.setVec3("dirLight.ambient", glm::vec3(0.5f, 0.5f, 0.5f));
+		staticShader.setVec3("dirLight.diffuse", glm::vec3(0.8f, 0.8f, 0.8f)); 
+		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.0f));
 
 		staticShader.setVec3("pointLight[0].position", lightPosition); //Iluminación posicional 
 		staticShader.setVec3("pointLight[0].ambient", glm::vec3(0.5f, 0.5f, 0.5f));
 		staticShader.setVec3("pointLight[0].diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
 		staticShader.setVec3("pointLight[0].specular", glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setFloat("pointLight[0].constant", 0.08f); //Distancia a la que iluminan los rayos 
-		staticShader.setFloat("pointLight[0].linear", 0.009f); // ""
-		staticShader.setFloat("pointLight[0].quadratic", 0.032f);//potencia luz
+		staticShader.setFloat("pointLight[0].constant", 0.08f);
+		staticShader.setFloat("pointLight[0].linear", 0.009f); 
+		staticShader.setFloat("pointLight[0].quadratic", 0.032f);
 
 		staticShader.setVec3("pointLight[1].position", glm::vec3(-80.0, 3.0f, 0.0f));
 		staticShader.setVec3("pointLight[1].ambient", glm::vec3(0.0f, 0.2f, 0.0f));
@@ -624,7 +649,7 @@ int main()
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-8500.0f, 50.0f, -2500.0f + caminaPin)); 
 		model = glm::scale(model, glm::vec3(2.0f));	
-		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotPin), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		penguin.Draw(animShader);
 
@@ -656,35 +681,35 @@ int main()
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//car.Draw(staticShader);
+		car.Draw(staticShader);
 
 		model = glm::translate(tmp, glm::vec3(-130.0f, 40.0f, 100.0f));
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//llanta.Draw(staticShader); //llanta delDer
+		llanta.Draw(staticShader); //llanta delDer
 
 		model = glm::translate(tmp, glm::vec3(-130.0f, 40.0f, -100.0f));
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(-giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//llanta.Draw(staticShader); //llanta delIzq
+		llanta.Draw(staticShader); //llanta delIzq
 
 		model = glm::translate(tmp, glm::vec3(150.0f, 40.0f, 100.0f));
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//llanta.Draw(staticShader); //llanta trasDer
+		llanta.Draw(staticShader); //llanta trasDer
 
 		model = glm::translate(tmp, glm::vec3(150.0f, 40.0f, -100.0f));
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(-giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//llanta.Draw(staticShader); //llanta trasIzq
+		llanta.Draw(staticShader); //llanta trasIzq
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animales
@@ -714,9 +739,9 @@ int main()
 		staticShader.setMat4("model", model);
 		cangrejoLi.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-5200.0f, 600.0f, -4200.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-5200.0f + nadaT, 600.0f, -4200.0f));
+		model = glm::rotate(model, glm::radians(rotT), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(5.0f));
-		//model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		tortuga.Draw(staticShader);
 		
@@ -724,25 +749,31 @@ int main()
 		model = glm::scale(model, glm::vec3(0.3f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//pez1.Draw(staticShader);
+		pez1.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1100.0f , 400.0f, -2500.0f));
 		model = glm::scale(model, glm::vec3(0.3f));
-		model = glm::rotate(model, glm::radians(-rotMed), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		pez5.Draw(staticShader);
+		pez2.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-900.0f + nada, 800.0f, -2800.0f));
 		model = glm::scale(model, glm::vec3(0.3f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//pez3.Draw(staticShader);
+		pez3.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-950.0f + nada, 100.0f , -2800.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-950.0f + nada, 1500.0f , -2800.0f));
 		model = glm::scale(model, glm::vec3(0.3f));
-		model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//pez4.Draw(staticShader);
+		pez4.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1100.0f, 400.0f, -2500.0f));
+		model = glm::scale(model, glm::vec3(0.5f));
+		model = glm::rotate(model, glm::radians(-rotMed), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pez5.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-7300.0f, 0.0f, -4700.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
@@ -780,13 +811,14 @@ int main()
 		staticShader.setMat4("model", model);
 		snail.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-2200.0f + nadaCaballo, 700.0f + nadaCaballo, -700.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-4000.0f + nadaCaballo, 700.0f, -700.0f));
+		model = glm::rotate(model, glm::radians(-20.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(rotC), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		seaHorse.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-3000.0f + nadaGlobo, 400.0f, -600.0f));
-		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotG), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(crece));
 		staticShader.setMat4("model", model);
 		globo.Draw(staticShader);
@@ -815,13 +847,7 @@ int main()
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		//ray.Draw(staticShader);
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-2500.0f, 100.0f, -650.0f));
-		model = glm::scale(model, glm::vec3(0.15f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		//pulpo.Draw(staticShader); //Si se activa se traba la ejecución
-
+		// 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animales animados
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -845,14 +871,14 @@ int main()
 		model = glm::scale(model, glm::vec3(50.0f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		//tuna.Draw(staticShader);
+		cuerpo.Draw(staticShader);
 		//COLA atun
 		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(rotPez), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(movCola), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(50.0f));
 		staticShader.setMat4("model", model);
-		//tunaTail.Draw(staticShader);
+		cola.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animados KeyFrames
@@ -918,17 +944,11 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		abre ^= true;
 	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
 		inflar ^= true;
-		inflarSound = true;
 	if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS)
 		sound = true;
 	
-
-	//Car animation
-	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
-		animacion ^= true; //XOR, asigna el contrario de lo que tiene asignado
-
 //Animación delfin saltando
-	if (key == GLFW_KEY_P && action == GLFW_PRESS)
+	if (key == GLFW_KEY_4 && action == GLFW_PRESS)
 	{
 		if (play == false && (FrameIndex > 1))
 		{

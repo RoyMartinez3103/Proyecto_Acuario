@@ -2,16 +2,11 @@
 C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
 C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
 C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(982,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(983,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(987,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(988,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(990,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(991,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(999,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-glfw3.lib(input.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(input.obj)' o en 'C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-glfw3.lib(monitor.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(monitor.obj)' o en 'C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-glfw3.lib(window.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(window.obj)' o en 'C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-glfw3.lib(win32_joystick.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_joystick.obj)' o en 'C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-glfw3.lib(win32_window.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_window.obj)' o en 'C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(997,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(998,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(1002,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(1003,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(1005,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(1006,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(1014,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
   CGeIHC.vcxproj -> C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\Debug\CGeIHC.exe
