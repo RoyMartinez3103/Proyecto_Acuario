@@ -1,7 +1,7 @@
 #version 330 core
 out vec4 FragColor;
 
-#define NUMBER 3
+#define NUMBER 2
 
 in vec3 FragPos;
 in vec3 Normal;
