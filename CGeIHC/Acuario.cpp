@@ -104,8 +104,9 @@ bool	regresa = false,
 		peceraG = false,
 		peceraPin = false,
 		abre = false,
-		asusta = false,
 		inflar = false,
+		inflarSound = false,
+		delfinSound = false,
 		sound = false;
 
 //Keyframes (Manipulación y dibujo)
@@ -122,6 +123,13 @@ float	incX = 0.0f,
 		saltoDelfIncY = 0.0f,
 		saltoDelfIncZ = 0.0f,
 		rotDelfInc = 0.0f;
+
+//Audio de fondo
+const wchar_t* path = TEXT("burbujas.wav");
+const wchar_t* pathDelf = TEXT("delfinSound.wav");
+const wchar_t* pathGlobo = TEXT("inflando.wav");
+
+
 
 #define SAVED_FRAMES 3
 #define MAX_FRAMES 9  //Se asigna la cantidad max de cuadros clave que puedo guardar
@@ -179,12 +187,10 @@ void interpolation(void) //Incremento = posFinal - posInicial / #cuadrosClave
 	rotDelfInc = (KeyFrame[playIndex + 1].rotDelf - KeyFrame[playIndex].rotDelf) / i_max_steps;
 }
 
-//Audio
-const wchar_t* path = TEXT("delfin.wav");
+//Audio de fondo
 void musica() {
 	if (sound) {
-		PlaySound(path, NULL, SND_FILENAME | SND_ASYNC);
-		printf("\nSe reprodujo\n");
+		PlaySound(path, NULL, SND_LOOP|SND_ASYNC);
 		sound = false;
 	}
 }
@@ -316,14 +322,14 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 	if (peceraPin) {
 		if (caminaPin > -1200.0f) {
 			caminaPin -= 2.0f;
-			rotPez = -90.0f;
+			rotPez = 90.0f;
 		}
 		else peceraPin = false;
 	}
 	else {
 		if (caminaPin < 390.0f) {
 			caminaPin += 2.0f;
-			rotPez = 90.0f;
+			rotPez = -90.0f;
 		}
 		else
 			peceraPin = true;
@@ -351,6 +357,12 @@ void animate(void) //Ayuda a animar los objetos de manera automática
 			peceraG = true;
 	}
 
+//Efecto de sonido delfin
+	if (delfinSound) {
+		PlaySound(pathDelf, NULL, SND_FILENAME | SND_ASYNC);
+		printf("\nSe reproduce delfin");
+		delfinSound = false;
+	}
 //Animación caballito
 	if (nadaCaballo < 30.0f) {
 		nadaCaballo += 2.0f;
@@ -471,11 +483,8 @@ int main()
 	Model shell("modelos/decoracion/concha.obj");
 	
 	//**************** Animados ***************************
-	Model car("modelos/auto/car/carroceria.obj");
-	Model llanta("modelos/auto/car/llanta.obj");
-
-	//ModelAnim mariposa("modelos/Animados/butterflyFBX/butterflyFBX.fbx");
-	//mariposa.initShaders(animShader.ID);
+	//Model car("modelos/auto/car/carroceria.obj");
+	//Model llanta("modelos/auto/car/llanta.obj");
 
 	ModelAnim kraken("modelos/Animados/kraken-animation/source/Kraken.fbx");
 	kraken.initShaders(animShader.ID);
@@ -486,8 +495,8 @@ int main()
 	ModelAnim penguin2("modelos/Pinguino/penguin/Penguin_SK.fbx");
 	penguin2.initShaders(animShader.ID);
 
-	ModelAnim brinca("modelos/Animados/kidJump2.fbx");
-	brinca.initShaders(animShader.ID);
+	//ModelAnim brinca("modelos/Animados/kidJump2.fbx");
+	//brinca.initShaders(animShader.ID);
 
 //*************************** Key Frames ***************************************
 	//Inicialización de KeyFrames
@@ -601,11 +610,11 @@ int main()
 		animShader.setVec3("light.direction", lightDirection);
 		animShader.setVec3("viewPos", camera.Position);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(20.0f, 10.0f, -2200.0f)); 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(50.0f, 10.0f, -2200.0f)); 
 		model = glm::scale(model, glm::vec3(3.0f));	
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
-		brinca.Draw(animShader);
+		//brinca.Draw(animShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(1500.0f, 30.0f, -2600.0f)); 
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, glfwGetTime()));
@@ -647,35 +656,35 @@ int main()
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		car.Draw(staticShader);
+		//car.Draw(staticShader);
 
 		model = glm::translate(tmp, glm::vec3(-130.0f, 40.0f, 100.0f));
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader); //llanta delDer
+		//llanta.Draw(staticShader); //llanta delDer
 
 		model = glm::translate(tmp, glm::vec3(-130.0f, 40.0f, -100.0f));
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(-giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader); //llanta delIzq
+		//llanta.Draw(staticShader); //llanta delIzq
 
 		model = glm::translate(tmp, glm::vec3(150.0f, 40.0f, 100.0f));
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader); //llanta trasDer
+		//llanta.Draw(staticShader); //llanta trasDer
 
 		model = glm::translate(tmp, glm::vec3(150.0f, 40.0f, -100.0f));
 		model = glm::scale(model, glm::vec3(120.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(-giroLlanta), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader); //llanta trasIzq
+		//llanta.Draw(staticShader); //llanta trasIzq
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Animales
@@ -717,7 +726,7 @@ int main()
 		staticShader.setMat4("model", model);
 		//pez1.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1050.0f , 400.0f, -2800.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-1100.0f , 400.0f, -2500.0f));
 		model = glm::scale(model, glm::vec3(0.3f));
 		model = glm::rotate(model, glm::radians(-rotMed), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
@@ -765,8 +774,8 @@ int main()
 		staticShader.setMat4("model", model);
 		star.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-5000.0f, 300.0f, -4200.0f));
-		model = glm::scale(model, glm::vec3(120.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-5000.0f, 300.0f, -4400.0f));
+		model = glm::scale(model, glm::vec3(100.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		snail.Draw(staticShader);
@@ -909,8 +918,9 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		abre ^= true;
 	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
 		inflar ^= true;
-	//if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
-		//sound = true;
+		inflarSound = true;
+	if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS)
+		sound = true;
 	
 
 	//Car animation
@@ -923,6 +933,7 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		if (play == false && (FrameIndex > 1))
 		{
 			std::cout << "Play animation" << std::endl;
+			delfinSound = true;
 			resetElements();
 			//First Interpolation
 			interpolation();
