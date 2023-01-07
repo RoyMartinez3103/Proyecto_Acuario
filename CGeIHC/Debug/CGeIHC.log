@@ -1,14 +1,4 @@
-﻿  Acuario.cpp
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(991,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(992,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(996,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(997,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(999,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(1000,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\CGeIHC\Acuario.cpp(1008,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+﻿  LINK : no se encontró C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\Debug\CGeIHC.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
 glfw3.lib(context.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(context.obj)' o en 'C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 glfw3.lib(init.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(init.obj)' o en 'C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 glfw3.lib(input.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(input.obj)' o en 'C:\Users\rodri\Desktop\FI\Semestre 9\CompuGraf\gitAcuario\Proyecto_Acuario\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
